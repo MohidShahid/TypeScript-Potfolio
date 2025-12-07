@@ -96,7 +96,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Name Section */}
-        <div className="text-[132px] font-bold leading-[1]">
+        <div className="text-[132px] font-bold leading-none">
           <div>
             <span className="relative inline-flex items-center">
               {/* Circle behind word */}
