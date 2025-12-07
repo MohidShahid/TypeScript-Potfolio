@@ -10,8 +10,8 @@ const ResumeSection = () => {
       <div className="w-full md:w-[40%]">
         <p className="text-[#FF9330] font-syne SyneClass text-2xl font-bold">Resume</p>
         <div className="relative flex flex-col items-start SyneClass">
-          <p className="text-6xl font-bold relative">
-            <span className="absolute w-24 h-24 bg-[#FFB646] rounded-full -top-2 -left-4 -z-10"></span>
+          <p className="md:text-6xl text-3xl font-bold relative">
+            <span className="absolute md:w-24 md:h-24 w-10 h-10 bg-[#FFB646] rounded-full -top-2 md:-left-4 -z-10 -left-2"></span>
             All
             <span className="ml-2">over my details find here...</span>
           </p>
@@ -40,7 +40,7 @@ const ResumeSection = () => {
           </p>
 
           {/* Info Grid */}
-          <div className="grid grid-cols-2 gap-y-4 gap-x-6 mt-6 md:w-[70%]">
+          <div className="grid grid-cols-2 gap-y-4 gap-x-6 mt-6 md:w-[70%] wrap-break-word">
             {/* Name */}
             <span className="font-semibold text-gray-700 dark:text-gray-300">
               Name
@@ -69,7 +69,7 @@ const ResumeSection = () => {
             <span className="font-semibold text-gray-700 dark:text-gray-300">
               Email
             </span>
-            <p className="SyneClass text-lg font-bold text-gray-900 dark:text-white">
+            <p className="SyneClass text-lg font-bold text-gray-900 dark:text-white ">
               haffiirfan@gmail.com
             </p>
 

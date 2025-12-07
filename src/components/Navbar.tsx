@@ -87,86 +87,65 @@ export function NavbarDemo() {
 
 export const HeroSection = () => {
   return (
-    <div className="container max-w-7xl mx-auto p-8 pt-24 flex SyneClass justify-between">
-      <div className="flex flex-col items-center justify-center text-center space-y-8">
+    <div className="container max-w-7xl mx-auto px-4 sm:px-8 pt-24 flex flex-col md:flex-row items-start md:items-center md:justify-between SyneClass gap-12 pb-4">
+      
+      {/* Left Side - Text Content */}
+      <div className="flex flex-col items-start text-left space-y-8 w-full md:w-1/2">
+
         {/* Heading Line + Title */}
-        <div className="flex items-center gap-5">
-          <div className="w-24 h-px bg-black dark:bg-white"></div>
-          <h1 className="text-3xl font-bold">Hello, I'm ✌</h1>
+        <div className="flex items-center gap-3">
+          <div className="w-16 h-px bg-black dark:bg-white"></div>
+          <h1 className="text-2xl sm:text-3xl font-bold">Hello, I'm ✌</h1>
         </div>
 
         {/* Name Section */}
-        <div className="text-[132px] font-bold leading-none">
+        <div className="text-7xl md:text-[132px] font-bold leading-none relative">
           <div>
             <span className="relative inline-flex items-center">
               {/* Circle behind word */}
-              <span className="absolute w-40 h-40 bg-[#FFB646] rounded-full -top-7 -left-4 z-0"></span>
+              <span className="absolute w-16 h-16 md:w-40 md:h-40 bg-[#FFB646] rounded-full -top-3 md:-top-7 -left-2 md:-left-4 z-0"></span>
               <span className="relative z-10">Haffi</span>
             </span>
             <span className="block">Irfan</span>
           </div>
-
-          <p className="text-[24px] mt-4">AI Engineer | Based in Pakistan</p>
+          <p className="text-lg sm:text-[24px] mt-4">AI Engineer | Based in Pakistan</p>
         </div>
 
         {/* Buttons Section */}
-        <div className="flex items-center gap-6 mt-4">
-          {/* Primary Button (Bigger) */}
-          <Button
-            className="flex items-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl"
-            size={"xl"}
-          >
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mt-4 w-full sm:w-auto">
+          <Button className="flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-lg font-semibold rounded-xl w-full sm:w-auto" size={"xl"}>
             Let&apos;s Talk
             <HoverArrow />
           </Button>
 
-          {/* Secondary Transparent Button */}
           <Button
             variant="outline"
-            className="flex items-center gap-3 px-8 py-4 text-lg font-semibold rounded-xl 
-                 bg-transparent border border-black dark:border-white"
+            className="flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-lg font-semibold rounded-xl w-full sm:w-auto border border-black dark:border-white bg-transparent"
             size={"xl"}
           >
             My Work
             <HoverArrow />
           </Button>
         </div>
-        {/* Stats + Icons Section */}
 
-        <div className="flex gap-3 items-center justify-between max-w-7xl w-full mt-5">
-          <div className="flex flex-wrap items-center justify-center gap-12 text-center">
+        {/* Stats + Social Icons */}
+        <div className="flex sm:flex-row items-start sm:items-center md:justify-start gap-6 mt-6 w-full">
+
+          {/* Stats */}
+          <div className="flex flex-wrap items-start sm:items-center gap-6 text-left">
             <div>
-              <h2 className="text-3xl font-bold">1.2k+</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold">1.2k+</h2>
               <p className="text-sm text-gray-600">Hours of Coding Practice</p>
             </div>
-
-            {/* <div>
-      <h2 className="text-3xl font-bold">20+</h2>
-      <p className="text-sm text-gray-600">Projects Completed</p>
-    </div> */}
-
-            {/* <div>
-      <h2 className="text-3xl font-bold">5+</h2>
-      <p className="text-sm text-gray-600">Tech Stacks Learned</p>
-    </div> */}
           </div>
 
-          {/* Tagline */}
-          {/* <p className="text-sm text-gray-700 font-medium tracking-wide text-center">
-    Student • Learning & Building Everyday • Worldwide Clients (Soon!)
-  </p> */}
-
-          {/* Social Icons Row */}
-          <div className="flex items-center gap-6 opacity-90">
-            {/* LinkedIn */}
-            <LinkedIn className={"w-7 h-7 hover:text-blue-600 transition"} />
-
-            {/* GitHub */}
-            <Github className={"w-7 h-7 hover:text-blue-600 transition"} />
-
-            {/* Email */}
-            <Email className={"w-7 h-7 hover:text-red-600 transition"} />
+          {/* Social Icons */}
+          <div className="flex items-center gap-4 sm:gap-6 opacity-90 mt-4 sm:mt-0">
+            <LinkedIn className="w-6 h-6 sm:w-7 sm:h-7 hover:text-blue-600 transition" />
+            <Github className="w-6 h-6 sm:w-7 sm:h-7 hover:text-blue-600 transition" />
+            <Email className="w-6 h-6 sm:w-7 sm:h-7 hover:text-red-600 transition" />
           </div>
+
         </div>
       </div>
 
@@ -256,3 +235,4 @@ export const HeroSection = () => {
     </div>
   );
 };
+

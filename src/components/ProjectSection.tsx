@@ -8,11 +8,11 @@ const ProjectSection = () => {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center justify-center py-20 bg-[#FFE9D9]" id="project">
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center pl-2.5">
         <p className="SyneClass text-[#FF9330] text-2xl font-bold">Projects</p>
 
         <div className="relative flex flex-col items-start SyneClass mt-4">
-          <p className="text-6xl font-bold relative">
+          <p className="md:text-6xl text-4xl font-bold relative">
             My Recent{' '}
             <span className="relative inline-block z-10">
               Work
