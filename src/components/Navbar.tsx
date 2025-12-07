@@ -112,15 +112,15 @@ export const HeroSection = () => {
         </div>
 
         {/* Buttons Section */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mt-4 w-full sm:w-auto">
-          <Button className="flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-lg font-semibold rounded-xl w-full sm:w-auto" size={"xl"}>
+        <div className="flex sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mt-4 w-full sm:w-auto">
+          <Button className="flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-lg font-semibold rounded-xl sm:w-auto" size={"xl"}>
             Let&apos;s Talk
             <HoverArrow />
           </Button>
 
           <Button
             variant="outline"
-            className="flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-lg font-semibold rounded-xl w-full sm:w-auto border border-black dark:border-white bg-transparent"
+            className="flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-lg font-semibold rounded-xl sm:w-auto border border-black dark:border-white bg-transparent"
             size={"xl"}
           >
             My Work

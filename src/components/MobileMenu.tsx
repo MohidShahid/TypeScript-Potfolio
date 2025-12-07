@@ -52,7 +52,7 @@ export function SheetDemo({
     <a
       key={item.path}
       href={item.path}
-      className="flex items-center py-5 px-4 border-b border-[#FFFFFF33] text-white justify-between"
+      className="flex items-center py-5 px-4 border-b text-2xl border-[#FFFFFF33] text-white justify-between"
       onClick={()=> setIsMobileMenuOpen(false)}
     >
       <p id="sidebar-items">{item.label}</p>
