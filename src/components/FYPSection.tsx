@@ -1,4 +1,4 @@
-import FYP from "../assets/FYP.png";
+import FYPCover from "../assets/FYPCover.jpg";
 
 const FYPSection = () => {
   return (
@@ -18,9 +18,9 @@ const FYPSection = () => {
         
         {/* Left Section (Image) */}
         <div className="flex flex-col gap-6">
-          <div className="w-full overflow-hidden rounded-3xl shadow-lg shadow-black/20 border border-white/10">
+          <div className="w-full overflow-hidden rounded-2xl shadow-lg shadow-black/20 border border-white/10">
             <img 
-              src={FYP} 
+              src={FYPCover} 
               className="w-full h-auto object-cover"
               alt="FYP Preview"
             />
@@ -40,7 +40,7 @@ const FYPSection = () => {
           </p>
 
           <ul className="list-disc pl-6 text-base leading-relaxed text-[#08080899] space-y-2">
-            <li>Photorealistic 3D models</li>
+            <li>Photorealistic Mode</li>
             <li>Graphic design and game-style characters</li>
             <li>2D images with a 3D appearance</li>
             <li>Short animated videos</li>

@@ -6,9 +6,14 @@ import { Award } from "lucide-react";
 const ResumeSection = () => {
   const [tabVal, setTabVal] = useState(0);
   return (
-    <div className="flex w-full md:gap-14 gap-4 pb-10 md:flex-row flex-col mb-14 md:px-0 px-2.5" id="resume">
+    <div
+      className="flex w-full md:gap-14 gap-4 pb-10 md:flex-row flex-col mb-14 md:px-0 px-2.5"
+      id="resume"
+    >
       <div className="w-full md:w-[40%]">
-        <p className="text-[#FF9330] font-syne SyneClass text-2xl font-bold">Resume</p>
+        <p className="text-[#FF9330] font-syne SyneClass text-2xl font-bold">
+          Resume
+        </p>
         <div className="relative flex flex-col items-start SyneClass">
           <p className="md:text-6xl text-3xl font-bold relative">
             <span className="absolute md:w-24 md:h-24 w-10 h-10 bg-[#FFB646] rounded-full -top-2 md:-left-4 -z-10 -left-2"></span>
@@ -95,42 +100,24 @@ const ResumeSection = () => {
       {tabVal === 1 && (
         <div className="flex flex-col gap-6 md:w-[60%] w-full">
           {/* Experience Card */}
-          <div className="w-full bg-[#0808080a] rounded-lg p-4 flex flex-col md:flex-row gap-14 py-8">
-            {/* Date */}
-            <p className="text-gray-600 font-medium md:w-36">
-              03/2008 - 07/2011
-            </p>
-
-            {/* Content */}
-            <div className="flex flex-col gap-1 justify-between">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-[#FFB646] rounded-full"></span>
-                <span className="font-semibold text-gray-700 dark:text-gray-300">
-                  Axtra
-                </span>
-              </div>
-              <h2 className="SyneClass text-lg font-bold text-gray-900 dark:text-white">
-                Software Engineering
-              </h2>
-            </div>
-          </div>
-
           {/* Add more cards as needed */}
-          <div className="w-full bg-[#0808080a] rounded-lg p-4 flex flex-col md:flex-row py-8 gap-14">
-            <p className="text-gray-600 font-medium md:w-36">
-              08/2011 - 12/2014
-            </p>
-            <div className="flex flex-col gap-1">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-[#FFB646] rounded-full"></span>
-                <span className="font-semibold text-gray-700 dark:text-gray-300">
-                  BetaTech
-                </span>
-              </div>
-              <h2 className="SyneClass text-lg font-bold text-gray-900 dark:text-white">
-                Frontend Developer
-              </h2>
+          <div className="w-full bg-white/80 dark:bg-[#0c0c0c] border border-gray-200/50 dark:border-gray-700/40 rounded-xl p-6 md:p-7 shadow-sm hover:shadow-md transition-all duration-300">
+            {/* Title Row */}
+            <div className="flex items-center gap-3 mb-2">
+              <span className="w-3 h-3 bg-[#FFB646] rounded-full shadow-md"></span>
+              <span className="font-bold text-gray-900 dark:text-gray-100 text-lg">
+                Research Publication (Submitted)
+              </span>
             </div>
+
+            {/* Description */}
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base">
+              Developed a full multimodal text-to-image-to-video pipeline using
+              SDXL 1.0, featuring 3D-like color rendering and automated video
+              generation. The work includes methodology, architecture, optimized
+              scheduling, and experiments— offering a lightweight multimodal
+              generation technique suitable for constrained GPUs.
+            </p>
           </div>
         </div>
       )}
@@ -238,115 +225,108 @@ const ResumeSection = () => {
           {/* Experience Card */}
           <div className="w-full bg-[#0808080a] rounded-lg p-4 flex flex-col md:flex-row gap-14 py-8">
             {/* Date */}
-            <p className="text-gray-600 font-medium md:w-36">
-              03/2008 - 07/2011
-            </p>
+            <p className="text-gray-600 font-medium md:w-36">2022 - 2026</p>
 
             {/* Content */}
             <div className="flex flex-col gap-1 justify-between">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-[#FFB646] rounded-full"></span>
                 <span className="font-semibold text-gray-700 dark:text-gray-300">
-                  Axtra
+                  Minhaj University
                 </span>
               </div>
               <h2 className="SyneClass text-lg font-bold text-gray-900 dark:text-white">
-                Software Engineering
+                Bachelor of Science in Software Engineering
               </h2>
             </div>
           </div>
 
           {/* Add more cards as needed */}
           <div className="w-full bg-[#0808080a] rounded-lg p-4 flex flex-col md:flex-row py-8 gap-14">
-            <p className="text-gray-600 font-medium md:w-36">
-              08/2011 - 12/2014
-            </p>
+            <p className="text-gray-600 font-medium md:w-36">2019 - 2021</p>
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-[#FFB646] rounded-full"></span>
                 <span className="font-semibold text-gray-700 dark:text-gray-300">
-                  BetaTech
+                  Superior College
                 </span>
               </div>
               <h2 className="SyneClass text-lg font-bold text-gray-900 dark:text-white">
-                Frontend Developer
+                FSC (Pre-Engineering)
               </h2>
             </div>
           </div>
         </div>
       )}
-{tabVal == 4 && (
-  <div className="flex flex-col gap-8 md:w-[60%] w-full">
+      {tabVal == 4 && (
+        <div className="flex flex-col gap-8 md:w-[60%] w-full">
+          {/* Certification Card */}
+          <div className="group w-full rounded-xl border border-white/20 bg-[#0808080a] backdrop-blur-md p-6  hover:shadow-[0_8px_25px_rgba(0,0,0,0.12)] transition-all duration-300">
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-[#FFB646]/10 rounded-full">
+                <Award className="text-[#FFB646]" size={26} />
+              </div>
 
-    {/* Certification Card */}
-    <div className="group w-full rounded-xl border border-white/20 bg-[#0808080a] backdrop-blur-md p-6  hover:shadow-[0_8px_25px_rgba(0,0,0,0.12)] transition-all duration-300">
-      <div className="flex items-start gap-4">
-        <div className="p-3 bg-[#FFB646]/10 rounded-full">
-          <Award className="text-[#FFB646]" size={26} />
+              <div className="flex flex-col gap-2">
+                <h1 className="text-xl font-semibold text-[#0f172b]">
+                  Microsoft Azure Certified
+                </h1>
+                <p className="text-[#FFB646] font-semibold">AI Fundamentals</p>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  Demonstrated foundational knowledge of AI concepts and Azure
+                  services including ML, Computer Vision, NLP, and Responsible
+                  AI practices.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Certification 2 */}
+          <div className="group w-full rounded-xl border border-white/20 bg-[#0808080a] backdrop-blur-md p-6  hover:shadow-[0_8px_25px_rgba(0,0,0,0.12)] transition-all duration-300">
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-[#FFB646]/10 rounded-full">
+                <Award className="text-[#FFB646]" size={26} />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <h1 className="text-xl font-semibold text-[#0f172b]">
+                  National Vocational and Technical Training Institute (NAVTTC)
+                </h1>
+                <p className="text-[#FFB646] font-semibold">
+                  Artificial Intelligence (Machine Learning; Deep Learning;
+                  Communication)
+                </p>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  Completed industry-level AI training with ML & DL practical
+                  projects. Certified by NAVTTC and Corvit.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Certification 3 */}
+          <div className="group w-full rounded-xl border border-white/20 bg-[#0808080a] backdrop-blur-md p-6  hover:shadow-[0_8px_25px_rgba(0,0,0,0.12)] transition-all duration-300">
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-[#FFB646]/10 rounded-full">
+                <Award className="text-[#FFB646]" size={26} />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <h1 className="text-xl font-semibold text-[#0f172b]">
+                  Corvit Systems
+                </h1>
+                <p className="text-[#FFB646] font-semibold">
+                  Artificial Intelligence (ML & DL)
+                </p>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  Completed hands-on AI training with real-world machine
+                  learning and deep learning projects at Corvit.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div className="flex flex-col gap-2">
-          <h1 className="text-xl font-semibold text-[#0f172b]">
-            Microsoft Azure Certified
-          </h1>
-          <p className="text-[#FFB646] font-semibold">
-           AI Fundamentals
-          </p>
-          <p className="text-sm text-gray-700 leading-relaxed">
-            Demonstrated foundational knowledge of AI concepts and Azure services including ML, 
-            Computer Vision, NLP, and Responsible AI practices.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    {/* Certification 2 */}
-    <div className="group w-full rounded-xl border border-white/20 bg-[#0808080a] backdrop-blur-md p-6  hover:shadow-[0_8px_25px_rgba(0,0,0,0.12)] transition-all duration-300">
-      <div className="flex items-start gap-4">
-        <div className="p-3 bg-[#FFB646]/10 rounded-full">
-          <Award className="text-[#FFB646]" size={26} />
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <h1 className="text-xl font-semibold text-[#0f172b]">
-            National Vocational and Technical Training Institute (NAVTTC)
-          </h1>
-          <p className="text-[#FFB646] font-semibold">
-            Artificial Intelligence (Machine Learning; Deep Learning; Communication)
-          </p>
-          <p className="text-sm text-gray-700 leading-relaxed">
-            Completed industry-level AI training with ML & DL practical projects. 
-            Certified by NAVTTC and Corvit.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    {/* Certification 3 */}
-    <div className="group w-full rounded-xl border border-white/20 bg-[#0808080a] backdrop-blur-md p-6  hover:shadow-[0_8px_25px_rgba(0,0,0,0.12)] transition-all duration-300">
-      <div className="flex items-start gap-4">
-        <div className="p-3 bg-[#FFB646]/10 rounded-full">
-          <Award className="text-[#FFB646]" size={26} />
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <h1 className="text-xl font-semibold text-[#0f172b]">
-            Corvit Systems
-          </h1>
-          <p className="text-[#FFB646] font-semibold">
-            Artificial Intelligence (ML & DL)
-          </p>
-          <p className="text-sm text-gray-700 leading-relaxed">
-            Completed hands-on AI training with real-world machine learning and deep 
-            learning projects at Corvit.
-          </p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-)}
-
+      )}
     </div>
   );
 };

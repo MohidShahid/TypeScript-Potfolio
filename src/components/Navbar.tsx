@@ -24,7 +24,7 @@ export function NavbarDemo() {
   const navItems = [
     {
       name: "Projects",
-      link: "/all-projects",
+      link: "all-projects",
     },
     {
       name: "Resume",
@@ -44,7 +44,7 @@ export function NavbarDemo() {
         {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo />
-          <NavItems items={navItems} />
+          <NavItems items={navItems}  />
           <div className="flex items-center gap-4">
             <div className="hover:text-white text-black flex items-center justify-center gap-0">
               <Link to="#contact">
