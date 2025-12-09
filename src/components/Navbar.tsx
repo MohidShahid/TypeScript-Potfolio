@@ -23,6 +23,10 @@ import { Link } from "react-router-dom";
 export function NavbarDemo() {
   const navItems = [
     {
+      name: "Home",
+      link: "/",
+    },
+    {
       name: "Projects",
       link: "all-projects",
     },
@@ -36,25 +40,23 @@ export function NavbarDemo() {
     },
   ];
 
- interface NavItem {
-  name: string;
-  link: string;
-}
+  interface NavItem {
+    name: string;
+    link: string;
+  }
 
-const onNavItemClick = (
-  event: React.MouseEvent<HTMLAnchorElement>,
-  item: NavItem
-) => {
-  console.log("Clicked:", event.target);
+  const onNavItemClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    item: NavItem
+  ) => {
+    console.log("Clicked:", event.target);
 
-  // optional: custom logic
-  // e.preventDefault(); (already handled inside NavItems)
+    // optional: custom logic
+    // e.preventDefault(); (already handled inside NavItems)
 
-  // manual navigation (if you want)
-  window.location.href = item.link;
-};
-
-  
+    // manual navigation (if you want)
+    window.location.href = item.link;
+  };
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -67,7 +69,18 @@ const onNavItemClick = (
           <NavItems items={navItems} onItemClick={onNavItemClick} />
           <div className="flex items-center gap-4">
             <div className="hover:text-white text-black flex items-center justify-center gap-0">
-              <Link to="#contact">
+              <Link
+                to="/#contact"
+                onClick={(e) => {
+                  // Smooth scroll for hash links
+                  if ("/#contact".includes("#")) {
+                    e.preventDefault(); // prevent default navigation
+                    const hash = "/#contact".split("#")[1];
+                    const el = document.getElementById(hash);
+                    el?.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
                 <NavbarButton
                   variant="secondary"
                   className="text-black text-md SyneClass hover:text-white"
@@ -108,10 +121,8 @@ const onNavItemClick = (
 export const HeroSection = () => {
   return (
     <div className="container max-w-7xl mx-auto px-4 sm:px-8 pt-24 flex flex-col md:flex-row items-start md:items-center md:justify-between SyneClass gap-12 pb-4">
-      
       {/* Left Side - Text Content */}
       <div className="flex flex-col items-start text-left space-y-8 w-full md:w-1/2">
-
         {/* Heading Line + Title */}
         <div className="flex items-center gap-3">
           <div className="w-16 h-px bg-black dark:bg-white"></div>
@@ -128,12 +139,26 @@ export const HeroSection = () => {
             </span>
             <span className="block">Irfan</span>
           </div>
-          <p className="text-lg sm:text-[24px] mt-4">AI Engineer | Based in Pakistan</p>
+          <p className="text-lg sm:text-[24px] mt-4">
+            AI Engineer | Based in Pakistan
+          </p>
         </div>
 
         {/* Buttons Section */}
-        <div className="flex sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mt-4 w-full sm:w-auto">
-          <Button className="flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-lg font-semibold rounded-xl sm:w-auto" size={"xl"}>
+        <div className="flex sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mt-4 w-full sm:w-auto pr-2.5">
+          <Button
+            className="flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-lg font-semibold rounded-xl sm:w-auto"
+            size={"xl"}
+            onClick={(e) => {
+                  // Smooth scroll for hash links
+                  if ("/#contact".includes("#")) {
+                    e.preventDefault(); // prevent default navigation
+                    const hash = "/#contact".split("#")[1];
+                    const el = document.getElementById(hash);
+                    el?.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+          >
             Let&apos;s Talk
             <HoverArrow />
           </Button>
@@ -142,6 +167,15 @@ export const HeroSection = () => {
             variant="outline"
             className="flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-lg font-semibold rounded-xl sm:w-auto border border-black dark:border-white bg-transparent"
             size={"xl"}
+            onClick={(e) => {
+                  // Smooth scroll for hash links
+                  if ("/#resume".includes("#")) {
+                    e.preventDefault(); // prevent default navigation
+                    const hash = "/#resume".split("#")[1];
+                    const el = document.getElementById(hash);
+                    el?.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
           >
             My Work
             <HoverArrow />
@@ -150,7 +184,6 @@ export const HeroSection = () => {
 
         {/* Stats + Social Icons */}
         <div className="flex sm:flex-row items-start sm:items-center md:justify-start gap-6 mt-6 w-full">
-
           {/* Stats */}
           <div className="flex flex-wrap items-start sm:items-center gap-6 text-left">
             <div>
@@ -165,7 +198,6 @@ export const HeroSection = () => {
             <Github className="w-6 h-6 sm:w-7 sm:h-7 hover:text-blue-600 transition" />
             <Email className="w-6 h-6 sm:w-7 sm:h-7 hover:text-red-600 transition" />
           </div>
-
         </div>
       </div>
 
@@ -255,4 +287,3 @@ export const HeroSection = () => {
     </div>
   );
 };
-

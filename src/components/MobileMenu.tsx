@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import {Link} from "react-router-dom"
 import {
   Sheet,
   SheetContent,
@@ -30,7 +31,7 @@ export function SheetDemo({
         />
       </SheetTrigger>
 
-      <SheetContent side="right" className="bg-black">
+      <SheetContent side="right" className="bg-black border-none">
         <SheetHeader>
          {/* <img
         src="https://assets.aceternity.com/logo-dark.png"
@@ -43,22 +44,33 @@ export function SheetDemo({
 
 <div className="grid flex-1 auto-rows-min gap-6 px-4">
   {[
-    { label: "Home", path: "/" },
-    { label: "About", path: "#resume" },
-    { label: "Project", path: "#project" },
-    { label: "Project Details", path: "/all-projects" },
-    { label: "Contact", path: "#contact" },
-  ].map((item) => (
-    <a
-      key={item.path}
-      href={item.path}
-      className="flex items-center py-4 px-3 border-b text-lg border-[#FFFFFF33] text-white justify-between"
-      onClick={()=> setIsMobileMenuOpen(false)}
-    >
-      <p id="sidebar-items">{item.label}</p>
-      <ArrowUpRight />
-    </a>
-  ))}
+  { label: "Home", path: "/" },
+  { label: "About", path: "/#resume" },
+  { label: "FYP", path: "/#project" },
+  { label: "All Projects", path: "/all-projects" },
+  { label: "Contact", path: "/#contact" },
+].map((item) => (
+  <Link
+    key={item.path}
+    to={item.path}
+    className="flex items-center py-4 px-3 border-b text-lg border-[#FFFFFF33] text-white justify-between"
+    onClick={(e) => {
+      setIsMobileMenuOpen(false);
+
+      // Smooth scroll for hash links
+      if (item.path.includes("#")) {
+        e.preventDefault(); // prevent default navigation
+        const hash = item.path.split("#")[1];
+        const el = document.getElementById(hash);
+        el?.scrollIntoView({ behavior: "smooth" });
+      }
+    }}
+  >
+    <p id="sidebar-items">{item.label}</p>
+    <ArrowUpRight />
+  </Link>
+))}
+
 </div>
 
 </SheetDescription>

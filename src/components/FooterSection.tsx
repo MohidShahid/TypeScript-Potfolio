@@ -49,7 +49,7 @@ const FooterSection = () => {
             {/* Card 2 */}
             <div className="border border-[#ffffff33] rounded-2xl py-8 px-6 flex flex-col gap-8 w-full sm:w-[48%] lg:w-[48%]">
               <h3 className="text-white SyneClass text-xl sm:text-2xl font-bold">
-                Want a more in-depth look at my history?
+                Let’s connect – reach out to me!
               </h3>
               <div className="flex items-center justify-between">
                 <h2 className="text-[#FF9330] SyneClass text-xl sm:text-2xl font-bold">
