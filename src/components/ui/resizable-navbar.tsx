@@ -10,7 +10,6 @@ import {
 
 import React, { useRef, useState } from "react";
 
-
 interface NavbarProps {
   children: React.ReactNode;
   className?: string;
@@ -22,14 +21,18 @@ interface NavBodyProps {
   visible?: boolean;
 }
 
-interface NavItemsProps {
-  items: {
-    name: string;
-    link: string;
-  }[];
-  className?: string;
-  onItemClick?: () => void;
+export interface NavItem {
+  name: string;
+  link: string;
 }
+
+interface NavItemsProps {
+  items: NavItem[];
+  className?: string;
+  onItemClick?: (event: React.MouseEvent<HTMLAnchorElement>, item: NavItem) => void;
+}
+
+
 
 interface MobileNavProps {
   children: React.ReactNode;
@@ -75,9 +78,9 @@ export const Navbar = ({ children, className }: NavbarProps) => {
         React.isValidElement(child)
           ? React.cloneElement(
               child as React.ReactElement<{ visible?: boolean }>,
-              { visible },
+              { visible }
             )
-          : child,
+          : child
       )}
     </motion.div>
   );
@@ -105,7 +108,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
       className={cn(
         "relative z-60 mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
         visible && "bg-white/80 dark:bg-neutral-950/80",
-        className,
+        className
       )}
     >
       {children}
@@ -121,17 +124,25 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
       onMouseLeave={() => setHovered(null)}
       className={cn(
         "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2",
-        className,
+        className
       )}
       id="NavItems"
     >
       {items.map((item, idx) => (
         <a
-          onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
-          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
-          key={`link-${idx}`}
+          key={idx}
           href={item.link}
+          onMouseEnter={() => setHovered(idx)}
+          onClick={(e) => {
+            if (onItemClick) {
+              e.preventDefault(); // stop default
+              onItemClick(e, item); // trigger parent logic
+            } else {
+              // default navigation (if no custom function provided)
+              return;
+            }
+          }}
+          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
         >
           {hovered === idx && (
             <motion.div
@@ -139,7 +150,10 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
               className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
             />
           )}
-          <span className="relative z-20 text-black! !SyneClass text-md">{item.name}</span>
+
+          <span className="relative z-20 text-black !SyneClass text-md">
+            {item.name}
+          </span>
         </a>
       ))}
     </motion.div>
@@ -168,7 +182,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
       className={cn(
         "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden",
         visible && "bg-white/80 dark:bg-neutral-950/80",
-        className,
+        className
       )}
     >
       {children}
@@ -184,7 +198,7 @@ export const MobileNavHeader = ({
     <div
       className={cn(
         "flex w-full flex-row items-center justify-between",
-        className,
+        className
       )}
     >
       {children}
@@ -196,8 +210,8 @@ export const MobileNavMenu = ({
   children,
   className,
   isOpen,
-  // onClose,
-}: MobileNavMenuProps) => {
+}: // onClose,
+MobileNavMenuProps) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -207,7 +221,7 @@ export const MobileNavMenu = ({
           exit={{ opacity: 0 }}
           className={cn(
             "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white px-4 py-8 shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset] dark:bg-neutral-950",
-            className,
+            className
           )}
         >
           {children}

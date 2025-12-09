@@ -36,6 +36,26 @@ export function NavbarDemo() {
     },
   ];
 
+ interface NavItem {
+  name: string;
+  link: string;
+}
+
+const onNavItemClick = (
+  e: React.MouseEvent<HTMLAnchorElement>,
+  item: NavItem
+) => {
+  console.log("Clicked:", item.name);
+
+  // optional: custom logic
+  // e.preventDefault(); (already handled inside NavItems)
+
+  // manual navigation (if you want)
+  window.location.href = item.link;
+};
+
+  
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -44,7 +64,7 @@ export function NavbarDemo() {
         {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo />
-          <NavItems items={navItems}  />
+          <NavItems items={navItems} onItemClick={onNavItemClick} />
           <div className="flex items-center gap-4">
             <div className="hover:text-white text-black flex items-center justify-center gap-0">
               <Link to="#contact">
