@@ -42,10 +42,10 @@ export function NavbarDemo() {
 }
 
 const onNavItemClick = (
-  e: React.MouseEvent<HTMLAnchorElement>,
+  event: React.MouseEvent<HTMLAnchorElement>,
   item: NavItem
 ) => {
-  console.log("Clicked:", item.name);
+  console.log("Clicked:", event.target);
 
   // optional: custom logic
   // e.preventDefault(); (already handled inside NavItems)
