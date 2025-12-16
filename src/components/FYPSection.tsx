@@ -57,6 +57,8 @@ const FYPSection = () => {
             <li>Metadata export</li>
             <li>Dynamic grids</li>
             <li>Lightweight Gradio-based interface</li>
+            <li>SadTalker-based face animation</li>
+           <li>GFPGAN-based image enhancement</li>
           </ul>
 
           <p className="text-base leading-relaxed text-[#08080899] mt-2">
