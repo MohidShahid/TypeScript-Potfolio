@@ -11,7 +11,7 @@ const Home = () => {
     <NavbarDemo />
     <HeroSection />
     </div>
-    <div className='w-full max-w-7xl items-center justify-center mx-auto pt-20'>
+    <div className='w-full max-w-7xl items-center justify-center mx-auto pt-20 px-2.5'>
     <ResumeSection />
     </div>
     <ProjectSection />

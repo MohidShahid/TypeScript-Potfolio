@@ -24,7 +24,7 @@ const ResumeSection = () => {
 
         <AnimatedTabs tabVal={tabVal} setTabVal={setTabVal} />
       </div>
-      {tabVal === 0 && (
+      {tabVal === 1 && (
         <div className="flex flex-col gap-6 md:w-[60%] w-full">
           {/* Heading */}
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -97,27 +97,59 @@ const ResumeSection = () => {
         </div>
       )}
 
-      {tabVal === 1 && (
+      {tabVal === 0 && (
         <div className="flex flex-col gap-6 md:w-[60%] w-full">
           {/* Experience Card */}
           {/* Add more cards as needed */}
           <div className="w-full bg-white/80 dark:bg-[#0c0c0c] border border-gray-200/50 dark:border-gray-700/40 rounded-xl p-6 md:p-7 shadow-sm hover:shadow-md transition-all duration-300">
             {/* Title Row */}
-            <div className="flex items-center gap-3 mb-2">
-              <span className="w-3 h-3 bg-[#FFB646] rounded-full shadow-md"></span>
+            <h2 className="mb-6 flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-gray-100 pl-7">
+  Research Paper Submitted
+</h2>
+
+            <div className="flex items-center gap-4 mb-2">
+              <span className="w-5 h-3 bg-[#FFB646] rounded-full shadow-md"></span>
               <span className="font-bold text-gray-900 dark:text-gray-100 text-lg">
-                Research Publication (Submitted)
+                HiGen3vid : Framework for Dependency, Quality and Memory
+                Optimization in Multimedia Generation Models
               </span>
             </div>
 
             {/* Description */}
+            <div className="pl-7 flex flex-col gap-3">
+              <p className="pt-5">Haffi Irfan  <span className="text-lg text-black font-bold">.</span>  Dr Muhammad Saleem</p>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base">
-              Developed a full multimodal text-to-image-to-video pipeline using
-              SDXL 1.0, featuring 3D-like color rendering and automated video
-              generation. The work includes methodology, architecture, optimized
-              scheduling, and experiments— offering a lightweight multimodal
-              generation technique suitable for constrained GPUs.
+              <span className="font-bold">Abstrat: </span>Research in multimedia generative AI has rapidly expanded by
+              working on large-scale vision-language diffusion models and the
+              specialization in computer vision. While individual AI model
+              results continue to improve, the practical approach to deploy
+              these AI models in multimedia application being much helpful in
+              automation. On the other side, a primary limitation of existing
+              orchestration approach of AI models is managing resource
+              conflicts, memory issues and lack of robustness. Regardless of
+              recent advances in text-to-image pipelines, prior implementations
+              still suffer from these issues. They often use high resource GPUs
+              to deploy these multimedia applications. We presents a
+              comprehensive framework that addresses version incompatibilities
+              before each model initialization in multimedia application.
+              Dynamic memory orchestration that enable sequential execution of
+              multiple large-scale AI models on consumer hardware with better
+              time management. Generating realistic and high quality visuals
+              with open-source models using LLM with graceful degradation under
+              suboptimal conditions. We propose HiGen3vid, a robust framework
+              approach for orchestrating multimedia AI models complex pipeline
+              to generate 3D like visuals from user’s simple text through
+              extensive experimentation. Quantitatively, HiGen3vid achieves a
+              state- of-the-art CLIP Score of 0.41, demonstrating a 41 percent
+              improvement in text-to-3D alignment compared to leading
+              DreamFusion at ∼0.31. Furthermore, the achieved FID of 24.2 and a
+              compelling 87 percent user preference confirm its superior quality
+              and geometric fidelity over previous baseline approaches.
             </p>
+            <p><span className="text-black font-bold word-spacing-[4px]">Keywords: </span>Dependency Resolution, Dynamic Memory Management, Robust AI
+Systems, Graceful Degradation, Multi-Model Orchestration</p>
+    <p className="pt-5 flex gap-4"><span className="text-[#FFB646] font-bold">Submitted to: </span>{"  "}Multimedia Tools and Application (Springer)</p>
+            </div>
           </div>
         </div>
       )}

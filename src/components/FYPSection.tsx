@@ -24,6 +24,7 @@ const FYPSection = () => {
               className="w-full h-auto object-cover"
               alt="FYP Preview"
             />
+            <video src=""></video>
           </div>
 
         </div>

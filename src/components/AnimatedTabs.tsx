@@ -7,7 +7,7 @@ interface AnimatedTabsProps {
   setTabVal: Dispatch<SetStateAction<number>>;
 }
 
-const tabs = ["About Me", "Achievements", "Skills", "Education", "Certifications"];
+const tabs = ["Achievements", "About Me", "Skills", "Education", "Certifications"];
 
 export default function AnimatedTabs({tabVal , setTabVal}: AnimatedTabsProps) {
 
