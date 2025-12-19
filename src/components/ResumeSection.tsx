@@ -123,7 +123,7 @@ const ResumeSection = () => {
                 Muhammad Saleem
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base">
-                <span className="font-bold">Abstrat: </span>Recent advances in
+                <span className="font-bold">Abstract: </span>Recent advances in
                 multimedia generative artificial intelligence have been driven
                 by large-scale vision–language diffusion models and increasing
                 specialization in computer vision. Although the performance of
