@@ -24,7 +24,7 @@ const ResumeSection = () => {
 
         <AnimatedTabs tabVal={tabVal} setTabVal={setTabVal} />
       </div>
-      {tabVal === 1 && (
+      {tabVal === 0 && (
         <div className="flex flex-col gap-6 md:w-[60%] w-full">
           {/* Heading */}
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -97,15 +97,15 @@ const ResumeSection = () => {
         </div>
       )}
 
-      {tabVal === 0 && (
+      {tabVal === 1 && (
         <div className="flex flex-col gap-6 md:w-[60%] w-full">
           {/* Experience Card */}
           {/* Add more cards as needed */}
           <div className="w-full bg-white/80 dark:bg-[#0c0c0c] border border-gray-200/50 dark:border-gray-700/40 rounded-xl p-6 md:p-7 shadow-sm hover:shadow-md transition-all duration-300">
             {/* Title Row */}
             <h2 className="mb-6 flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-gray-100 pl-7">
-  Research Paper Submitted
-</h2>
+              Research Paper (Submitted)
+            </h2>
 
             <div className="flex items-center gap-4 mb-2">
               <span className="w-5 h-3 bg-[#FFB646] rounded-full shadow-md"></span>
@@ -117,38 +117,48 @@ const ResumeSection = () => {
 
             {/* Description */}
             <div className="pl-7 flex flex-col gap-3">
-              <p className="pt-5">Haffi Irfan  <span className="text-lg text-black font-bold">.</span>  Dr Muhammad Saleem</p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base">
-              <span className="font-bold">Abstrat: </span>Research in multimedia generative AI has rapidly expanded by
-              working on large-scale vision-language diffusion models and the
-              specialization in computer vision. While individual AI model
-              results continue to improve, the practical approach to deploy
-              these AI models in multimedia application being much helpful in
-              automation. On the other side, a primary limitation of existing
-              orchestration approach of AI models is managing resource
-              conflicts, memory issues and lack of robustness. Regardless of
-              recent advances in text-to-image pipelines, prior implementations
-              still suffer from these issues. They often use high resource GPUs
-              to deploy these multimedia applications. We presents a
-              comprehensive framework that addresses version incompatibilities
-              before each model initialization in multimedia application.
-              Dynamic memory orchestration that enable sequential execution of
-              multiple large-scale AI models on consumer hardware with better
-              time management. Generating realistic and high quality visuals
-              with open-source models using LLM with graceful degradation under
-              suboptimal conditions. We propose HiGen3vid, a robust framework
-              approach for orchestrating multimedia AI models complex pipeline
-              to generate 3D like visuals from user’s simple text through
-              extensive experimentation. Quantitatively, HiGen3vid achieves a
-              state- of-the-art CLIP Score of 0.41, demonstrating a 41 percent
-              improvement in text-to-3D alignment compared to leading
-              DreamFusion at ∼0.31. Furthermore, the achieved FID of 24.2 and a
-              compelling 87 percent user preference confirm its superior quality
-              and geometric fidelity over previous baseline approaches.
-            </p>
-            <p><span className="text-black font-bold word-spacing-[4px]">Keywords: </span>Dependency Resolution, Dynamic Memory Management, Robust AI
-Systems, Graceful Degradation, Multi-Model Orchestration</p>
-    <p className="pt-5 flex gap-4"><span className="text-[#FFB646] font-bold">Submitted to: </span>{"  "}Multimedia Tools and Application (Springer)</p>
+              <p className="pt-5">
+                Haffi Irfan{" "}
+                <span className="text-lg text-black font-bold">.</span> Dr
+                Muhammad Saleem
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base">
+                <span className="font-bold">Abstrat: </span>Recent advances in
+                multimedia generative artificial intelligence have been driven
+                by large-scale vision–language diffusion models and increasing
+                specialization in computer vision. Although the performance of
+                individual models continues to improve, the deployment of
+                complex multimedia AI pipelines in real-world applications
+                remains challenging due to resource conflicts, memory
+                constraints, version incompatibilities, and limited robustness.
+                Moreover, existing text-to-image and text-to-3D generation
+                systems typically depend on high-end GPU resources, which
+                restricts their scalability on consumer-grade hardware. We
+                propose HiGen3vid, a robust multimedia AI orchestration
+                framework that resolves model version incompatibilities and
+                dynamically manages memory to enable the efficient execution of
+                large-scale AI models. HiGen3vid generates high-quality 3D-like
+                visual content from simple textual input using open-source
+                diffusion models integrated with large language models, while
+                supporting graceful degradation under constrained computational
+                resources. Extensive experimental evaluation demonstrates that
+                HiGen3vid achieves a state-of-the-art CLIP score of 0.41,
+                representing a 41% improvement over the DreamFusion baseline
+                (∼0.31). Furthermore, HiGen3vid attains an FID score of 24.2 and
+                an 87% user preference rate, confirming its superior visual
+                quality and geometric fidelity.
+              </p>
+              <p>
+                <span className="text-black font-bold word-spacing-[4px]">
+                  Keywords:{" "}
+                </span>
+                Dependency Resolution, Dynamic Memory Management, Robust AI
+                Systems, Graceful Degradation, Multi-Model Orchestration
+              </p>
+              <p className="pt-5 flex gap-4">
+                <span className="text-[#FFB646] font-bold">Submitted to: </span>
+                {"  "}Multimedia Tools and Application (Springer)
+              </p>
             </div>
           </div>
         </div>

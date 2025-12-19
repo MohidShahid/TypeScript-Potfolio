@@ -9,6 +9,7 @@ import {
 } from "motion/react";
 
 import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom"; // Import React Router's Link for client-side navigation
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -32,8 +33,6 @@ interface NavItemsProps {
   onItemClick?: (event: React.MouseEvent<HTMLAnchorElement>, item: NavItem) => void;
 }
 
-
-
 interface MobileNavProps {
   children: React.ReactNode;
   className?: string;
@@ -49,7 +48,6 @@ interface MobileNavMenuProps {
   children: React.ReactNode;
   className?: string;
   isOpen: boolean;
-  onClose: () => void;
 }
 
 export const Navbar = ({ children, className }: NavbarProps) => {
@@ -129,18 +127,17 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
       id="NavItems"
     >
       {items.map((item, idx) => (
-        <a
+        <Link
           key={idx}
-          href={item.link}
+          to={item.link} // Use 'to' prop for React Router
           onMouseEnter={() => setHovered(idx)}
           onClick={(e) => {
             if (onItemClick) {
-              e.preventDefault(); // stop default
-              onItemClick(e, item); // trigger parent logic
-            } else {
-              // default navigation (if no custom function provided)
-              return;
+              e.preventDefault(); // Stop default navigation
+              const anchorEvent = { currentTarget: e.currentTarget } as React.MouseEvent<HTMLAnchorElement>;
+              onItemClick(anchorEvent, item); // Trigger parent logic
             }
+            // If no onItemClick, let React Router handle navigation/scrolling
           }}
           className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
         >
@@ -154,7 +151,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           <span className="relative z-20 text-black !SyneClass text-md">
             {item.name}
           </span>
-        </a>
+        </Link>
       ))}
     </motion.div>
   );
@@ -210,8 +207,7 @@ export const MobileNavMenu = ({
   children,
   className,
   isOpen,
-}: // onClose,
-MobileNavMenuProps) => {
+}: MobileNavMenuProps) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -247,8 +243,8 @@ export const MobileNavToggle = ({
 
 export const NavbarLogo = () => {
   return (
-    <a
-      href="#"
+    <Link
+      to="/" // Use 'to' for React Router
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
       <img
@@ -258,7 +254,7 @@ export const NavbarLogo = () => {
         height={30}
       />
       {/* <span className="font-medium text-black dark:text-white">Startup</span> */}
-    </a>
+    </Link>
   );
 };
 
@@ -275,10 +271,7 @@ export const NavbarButton = ({
   children: React.ReactNode;
   className?: string;
   variant?: "primary" | "secondary" | "dark" | "gradient";
-} & (
-  | React.ComponentPropsWithoutRef<"a">
-  | React.ComponentPropsWithoutRef<"button">
-)) => {
+} & React.ComponentPropsWithoutRef<"a" | "button">) => {
   const baseStyles =
     "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
 
@@ -291,9 +284,29 @@ export const NavbarButton = ({
       "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
   };
 
+  const to = href; // Alias for React Router
+
+  // Use React Router Link if 'to' is provided, otherwise fallback to Tag
+  if (to) {
+    return (
+      <Link 
+        to={to} 
+        className={cn(baseStyles, variantStyles[variant], className)} 
+        onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+          // Handle onClick with anchor type
+          if ('onClick' in props && props.onClick) {
+            (props.onClick as React.MouseEventHandler<HTMLAnchorElement>)(e);
+          }
+        }}
+        {...(props as React.ComponentPropsWithoutRef<"a">)}
+      >
+        {children}
+      </Link>
+    );
+  }
+
   return (
     <Tag
-      href={href || undefined}
       className={cn(baseStyles, variantStyles[variant], className)}
       {...props}
     >
