@@ -37,7 +37,7 @@ const ResumeSection = () => {
             multimodal generative research, with a distinguished research
             background. Possesses hands-on expertise in end-to-end development
             and deployment of deep learning models in Computer Vision and NLP.
-            Proficient in Python and well-versed in industry standard
+            Proficient andwell-versed in industry standard
             development tools and methodologies, ensuring quality and
             scalability. My research focuses on multimodal generative systems
             and 3D-aware image synthesis—developing geometry-guided models that
@@ -104,7 +104,7 @@ const ResumeSection = () => {
           <div className="w-full bg-white/80 dark:bg-[#0c0c0c] border border-gray-200/50 dark:border-gray-700/40 rounded-xl p-6 md:p-7 shadow-sm hover:shadow-md transition-all duration-300">
             {/* Title Row */}
             <h2 className="mb-6 flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-gray-100 pl-7">
-              Research Paper (Submitted)
+              Research Paper (Under Review)
             </h2>
 
             <div className="flex items-center gap-4 mb-2">
@@ -253,6 +253,7 @@ const ResumeSection = () => {
                   src={skill.logo}
                   alt={skill.name}
                   className="h-10 w-10 object-contain"
+                  loading="lazy"
                 />
                 <p className="mt-2 text-sm font-medium text-gray-700">
                   {skill.name}

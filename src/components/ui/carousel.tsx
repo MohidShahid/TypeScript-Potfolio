@@ -1,15 +1,16 @@
 import { IconArrowNarrowRight } from "@tabler/icons-react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { useState, useRef, useId, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 /* ----------------------------------------------------
    TYPES
 ----------------------------------------------------- */
-interface SlideData {
+export interface SlideData {
   title: string;
   button: string;
   src: string;
+  type?: 'image' | 'video';
 }
 
 interface SlideProps {
@@ -39,6 +40,8 @@ const LightboxModal = ({
 }) => {
   if (!isOpen) return null;
 
+  const currentSlide = slides[currentIndex];
+
   return (
     <AnimatePresence>
       <motion.div
@@ -46,30 +49,45 @@ const LightboxModal = ({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-9999 flex items-center justify-center"
+        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] flex items-center justify-center p-4"
       >
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 text-white p-2 rounded-full hover:bg-white/10"
+          className="absolute top-6 right-6 text-white p-2 rounded-full hover:bg-white/10 z-[10000]"
         >
           <X size={28} />
         </button>
 
-        {/* Image */}
-        <motion.img
-          key={slides[currentIndex].src}
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.9, opacity: 0 }}
-          src={slides[currentIndex].src}
-          className="max-w-[90vw] max-h-[80vh] rounded-xl shadow-xl object-contain"
-        />
+        {/* Media */}
+        <div className="relative max-w-[90vw] max-h-[80vh] flex items-center justify-center overflow-hidden rounded-xl shadow-xl">
+          {currentSlide.type === 'video' ? (
+            <motion.video
+              key={currentSlide.src}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              src={currentSlide.src}
+              controls
+              autoPlay
+              className="max-w-full max-h-full object-contain"
+            />
+          ) : (
+            <motion.img
+              key={currentSlide.src}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              src={currentSlide.src}
+              className="max-w-full max-h-full object-contain"
+            />
+          )}
+        </div>
 
         {/* Left */}
         <button
           onClick={onPrev}
-          className="absolute left-6 text-white bg-white/10 p-3 rounded-full hover:bg-white/20"
+          className="absolute left-6 text-white bg-white/10 p-3 rounded-full hover:bg-white/20 z-[10000]"
         >
           <ChevronLeft size={32} />
         </button>
@@ -77,7 +95,7 @@ const LightboxModal = ({
         {/* Right */}
         <button
           onClick={onNext}
-          className="absolute right-6 text-white bg-white/10 p-3 rounded-full hover:bg-white/20"
+          className="absolute right-6 text-white bg-white/10 p-3 rounded-full hover:bg-white/20 z-[10000]"
         >
           <ChevronRight size={32} />
         </button>
@@ -134,7 +152,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
     <div className="[perspective-1400px] [transform-style-preserve-3d]">
       <li
         ref={slideRef}
-        className="flex flex-1 flex-col items-center justify-center relative text-center text-white transition-all duration-300 ease-in-out w-[70vmin] h-[70vmin] mx-[4vmin] z-10"
+        className="flex flex-1 flex-col items-center justify-center relative text-center text-white transition-all duration-300 ease-in-out w-[70vmin] h-[70vmin] mx-[4vmin] z-10 cursor-pointer"
         onClick={() => handleSlideClick(index)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -156,25 +174,38 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
                 : "none",
           }}
         >
-          <img
-            className="absolute inset-0 w-[120%] h-[120%] object-cover opacity-100 transition-opacity duration-600"
-            alt={slide.title}
-            src={slide.src}
-          />
+          {slide.type === 'video' ? (
+            <div className="relative w-full h-full">
+              <video
+                className="absolute inset-0 w-[120%] h-[120%] object-cover opacity-100 transition-opacity duration-600"
+                src={slide.src}
+                muted
+                loop
+                preload="metadata"
+              />
+              {/* Play Button Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors duration-300">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 shadow-lg transform transition-transform duration-300 hover:scale-110">
+                  <Play size={24} className="text-black ml-1 fill-black" />
+                </div>
+              </div>
+            </div>
+          ) : (
+            <img
+              className="absolute inset-0 w-[120%] h-[120%] object-cover opacity-100 transition-opacity duration-600"
+              alt={slide.title}
+              src={slide.src}
+              loading="lazy"
+            />
+          )}
+          {/* Overlay to catch clicks and prevent video interaction in carousel view */}
+          <div className="absolute inset-0 bg-transparent z-20" />
         </div>
         <article
           className={`relative p-[4vmin] transition-opacity duration-500 ${
             current === index ? "opacity-100 visible" : "opacity-0 invisible"
           }`}
         >
-          {/* <h2 className="text-lg md:text-2xl lg:text-4xl font-semibold">
-            {slide.title}
-          </h2>
-          <div className="flex justify-center">
-            <button className="mt-6 px-4 py-2 text-black bg-white rounded-2xl shadow hover:shadow-lg">
-              {slide.button}
-            </button>
-          </div> */}
         </article>
       </li>
     </div>

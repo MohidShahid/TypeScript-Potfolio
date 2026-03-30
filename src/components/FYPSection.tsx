@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Play } from "lucide-react";
-import FYPCover from "../assets/FYPCover.jpg";
+// import FYPCover from "../assets/FYPCover.jpg";
 
 const FYPSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -31,11 +31,11 @@ const FYPSection = () => {
         <div className="flex flex-col gap-6">
           <div className="w-full overflow-hidden">
             {/* Cover Image */}
-            <img
+            {/* <img
               src={FYPCover}
               alt="FYP Cover"
               className="w-full object-cover"
-            />
+            /> */}
 
             {/* Divider */}
             <div className="h-px w-full bg-white/10" />

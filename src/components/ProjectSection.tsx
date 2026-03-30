@@ -1,5 +1,7 @@
 import { CarouselDemo } from "./FYPCarousel";
 import FYPSection from "./FYPSection"
+import NeuroAnimateSection from "./NeuroAnimateSection";
+import { NeuroAnimateCarousel } from "./NeuroAnimateCarousel";
 import "../App.css";
 import { Button } from "./ui/button";
 import { ArrowUpRight } from "lucide-react";
@@ -25,6 +27,10 @@ const ProjectSection = () => {
       <FYPSection />
       <div className="w-full max-w-7xl mx-auto px-4 py-3.5">
       <CarouselDemo />
+      </div>
+      <NeuroAnimateSection />
+      <div className="w-full max-w-7xl mx-auto px-4 py-3.5">
+      <NeuroAnimateCarousel />
       </div>
       <div className="flex items-center justify-center w-[80%] bg-[#0f172b] rounded-md cursor-pointer" onClick={()=> navigate('all-projects')}>
       <Button className=" py-6 text-base font-semibold text-white cursor-pointer">View All Projects</Button>

@@ -7,9 +7,9 @@ interface AnimatedTabsProps {
   setTabVal: Dispatch<SetStateAction<number>>;
 }
 
-const tabs = ["About Me", "Achievements",  "Skills", "Education", "Certifications"];
+const tabs = ["About Me", "Publication", "Skills", "Education", "Certifications"];
 
-export default function AnimatedTabs({tabVal , setTabVal}: AnimatedTabsProps) {
+export default function AnimatedTabs({ tabVal, setTabVal }: AnimatedTabsProps) {
 
 
   // Arrow animation
@@ -40,7 +40,7 @@ export default function AnimatedTabs({tabVal , setTabVal}: AnimatedTabsProps) {
             `}
           >
             <p className="font-medium">{t}</p>
-             {/* Right-Up arrow */}
+            {/* Right-Up arrow */}
             <motion.div
               variants={arrowVariants}
               animate={isActive ? "hover" : "initial"} // selected tab moves arrow
