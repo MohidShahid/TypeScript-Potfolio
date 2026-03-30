@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Play } from "lucide-react";
-import FYPCover from "../assets/FYPCover.jpg";
+// import FYPCover from "../assets/FYPCover.jpg";
 
 const FYPSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
