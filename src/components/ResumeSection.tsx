@@ -107,12 +107,16 @@ const ResumeSection = () => {
               Research Paper (Under Review)
             </h2>
 
-            <div className="flex items-center gap-4 mb-2">
+            <div className="flex items-center gap-4 mb-1">
               <span className="w-5 h-3 bg-[#FFB646] rounded-full shadow-md"></span>
               <span className="font-bold text-gray-900 dark:text-gray-100 text-lg">
                 HiGen3vid : Framework for Dependency, Quality and Memory
                 Optimization in Multimedia Generation Models
               </span>
+            </div>
+            <div className="pl-9 mb-4">
+               <span className="text-sm font-semibold text-[#FFB646]">Manuscript ID: </span>
+               <span className="text-sm text-gray-600 dark:text-gray-400">MTAP-D-25-04874</span>
             </div>
 
             {/* Description */}
@@ -155,7 +159,7 @@ const ResumeSection = () => {
                 Dependency Resolution, Dynamic Memory Management, Robust AI
                 Systems, Graceful Degradation, Multi-Model Orchestration
               </p>
-              <p className="pt-5 flex gap-4">
+              <p className="pt-2 flex gap-4">
                 <span className="text-[#FFB646] font-bold">Submitted to: </span>
                 {"  "}Multimedia Tools and Application (Springer)
               </p>
