@@ -59,8 +59,8 @@ const LightboxModal = ({
           <X size={28} />
         </button>
 
-        {/* Media */}
-        <div className="relative max-w-[90vw] max-h-[80vh] flex items-center justify-center overflow-hidden rounded-xl shadow-xl">
+        {/* Media Wrapper */}
+        <div className="relative max-w-[95vw] max-h-[90vh] flex items-center justify-center shadow-2xl">
           {currentSlide.type === 'video' ? (
             <motion.video
               key={currentSlide.src}
@@ -70,7 +70,7 @@ const LightboxModal = ({
               src={currentSlide.src}
               controls
               autoPlay
-              className="max-w-full max-h-full object-contain"
+              className="max-w-full max-h-[90vh] w-auto h-auto object-contain rounded-lg"
             />
           ) : (
             <motion.img
@@ -79,7 +79,7 @@ const LightboxModal = ({
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               src={currentSlide.src}
-              className="max-w-full max-h-full object-contain"
+              className="max-w-full max-h-[90vh] w-auto h-auto object-contain rounded-lg"
             />
           )}
         </div>

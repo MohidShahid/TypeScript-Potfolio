@@ -203,7 +203,7 @@ export const HeroSection = () => {
             <img
               src={Haffi2}
               alt="Haffi Irfan"
-              className="w-[68%] h-[78%] ml-24 mt-14 object-cover object-top scale-[1.3] translate-y-4 transition-transform duration-700 hover:scale-[1.4]"
+              className="w-[68%] h-[78%] ml-[60px] md:ml-24 mt-14 object-cover object-top scale-[1.3] translate-y-4 transition-transform duration-700 hover:scale-[1.4]"
               loading="lazy"
             />
           </div>
