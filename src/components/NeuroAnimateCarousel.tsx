@@ -11,19 +11,25 @@ export function NeuroAnimateCarousel() {
     {
       title: "Video 2",
       button: "Watch Video",
-      src: "https://res.cloudinary.com/dlerfbweh/video/upload/v1774776220/result_5_rldmyr.mp4", // TODO: Add video URL
+      src: "https://res.cloudinary.com/dlerfbweh/video/upload/v1777206472/result3_jtdbzc.mp4", // TODO: Add video URL
       type: "video",
     },
     {
       title: "Video 3",
       button: "Watch Video",
-      src: "https://res.cloudinary.com/dlerfbweh/video/upload/v1774776231/result1_ssxbar.mp4", // TODO: Add video URL
+      src: "https://res.cloudinary.com/dlerfbweh/video/upload/v1777206477/result2_vyejpo.mp4", // TODO: Add video URL
       type: "video",
     },
     {
       title: "Video 4",
       button: "Watch Video",
-      src: "https://res.cloudinary.com/dlerfbweh/video/upload/v1774776212/result2_onwjke.mp4", // TODO: Add video URL
+      src: "https://res.cloudinary.com/dlerfbweh/video/upload/v1774776231/result1_ssxbar.mp4", // TODO: Add video URL
+      type: "video",
+    },
+    {
+      title: "Video 5",
+      button: "Watch Video",
+      src: "https://res.cloudinary.com/dlerfbweh/video/upload/v1777206470/enhanced_output_5_du4yku.mp4", // TODO: Add video URL
       type: "video",
     },
   ];
