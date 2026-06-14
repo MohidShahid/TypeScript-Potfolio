@@ -110,13 +110,13 @@ const ResumeSection = () => {
             <div className="flex items-center gap-4 mb-1">
               <span className="w-5 h-3 bg-[#FFB646] rounded-full shadow-md"></span>
               <span className="font-bold text-gray-900 dark:text-gray-100 text-lg">
-OrchestraGen: A Unified Memory-Orchestrated
-Multi-Model Pipeline for Text-to-Avatar Synthesis
+                OrchestraGen: A Unified Memory-Orchestrated
+                Multi-Model Pipeline for Text-to-Avatar Synthesis
               </span>
             </div>
             <div className="pl-9 mb-4">
-               <span className="text-sm font-semibold text-[#FFB646]">Submission ID:</span>
-               <span className="text-sm text-gray-600 dark:text-gray-400">3584a910-999b-4c24-aa3f-73b20ad59e74</span>
+              <span className="text-sm font-semibold text-[#FFB646]">Submission ID:</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">3584a910-999b-4c24-aa3f-73b20ad59e74</span>
             </div>
 
             {/* Description */}
@@ -128,30 +128,30 @@ Multi-Model Pipeline for Text-to-Avatar Synthesis
               </p>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base">
                 <span className="font-bold">Abstract: </span>Recent advances in multimedia generative artificial intelligence have
-been driven by large-scale vision–language diffusion models and increasing
-specialization in computer vision. Although the performance of individual
-models continues to improve, deploying complex multi-model AI pipelines in
-real-world applications remains challenging due to resource conflicts, memory
-constraints, version incompatibilities, and limited robustness. Moreover, existing
-text-to-avatar generation systems typically rely on high-end GPUs, which limits
-their scalability on consumer-grade hardware. We propose OrchestraGen, a
-multi-model generative pipeline that transforms textual prompts into fully
-animated portrait videos. OrchestraGen uses LLM-based prompt enhancement,
-dual-stage diffusion synthesis, 3D-aware portrait animation through custom
-body motion via facial retargeting, and super-resolution enhancement on
-constrained dual-GPU hardware. Dynamic Memory Orchestration enables
-reliable execution of 60.1 GB of heterogeneous model weights on a 32 GB
-dual-T4 configuration, achieving a 1.88× system memory scaling factor while
-maintaining peak single-GPU occupancy at 13.8 GB. Heterogeneous GPUCPU parallelism and dual-GPU parallel frame enhancement collectively reduce
-animation latency by 33.1%, while three-mode LLM prompt enhancement
-achieves a CLIP alignment score of 0.35
+                been driven by large-scale vision–language diffusion models and increasing
+                specialization in computer vision. Although the performance of individual
+                models continues to improve, deploying complex multi-model AI pipelines in
+                real-world applications remains challenging due to resource conflicts, memory
+                constraints, version incompatibilities, and limited robustness. Moreover, existing
+                text-to-avatar generation systems typically rely on high-end GPUs, which limits
+                their scalability on consumer-grade hardware. We propose OrchestraGen, a
+                multi-model generative pipeline that transforms textual prompts into fully
+                animated portrait videos. OrchestraGen uses LLM-based prompt enhancement,
+                dual-stage diffusion synthesis, 3D-aware portrait animation through custom
+                body motion via facial retargeting, and super-resolution enhancement on
+                constrained dual-GPU hardware. Dynamic Memory Orchestration enables
+                reliable execution of 60.1 GB of heterogeneous model weights on a 32 GB
+                dual-T4 configuration, achieving a 1.88× system memory scaling factor while
+                maintaining peak single-GPU occupancy at 13.8 GB. Heterogeneous GPUCPU parallelism and dual-GPU parallel frame enhancement collectively reduce
+                animation latency by 33.1%, while three-mode LLM prompt enhancement
+                achieves a CLIP alignment score of 0.35
               </p>
               <p>
                 <span className="text-black font-bold word-spacing-[4px]">
                   Keywords:{" "}
                 </span>
-Multi-Model Orchestration, Text-to-Avatar Synthesis, DualGPU Parallel Inference, Dependency Conflict Resolution, Dynamic Memory
-Management
+                Multi-Model Orchestration, Text-to-Avatar Synthesis, DualGPU Parallel Inference, Dependency Conflict Resolution, Dynamic Memory
+                Management
               </p>
               <p className="pt-2 flex gap-4">
                 <span className="text-[#FFB646] font-bold">Submitted to: </span>
