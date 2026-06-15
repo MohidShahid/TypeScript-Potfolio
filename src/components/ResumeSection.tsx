@@ -142,7 +142,7 @@ const ResumeSection = () => {
                 constrained dual-GPU hardware. Dynamic Memory Orchestration enables
                 reliable execution of 60.1 GB of heterogeneous model weights on a 32 GB
                 dual-T4 configuration, achieving a 1.88× system memory scaling factor while
-                maintaining peak single-GPU occupancy at 13.8 GB. Heterogeneous GPUCPU parallelism and dual-GPU parallel frame enhancement collectively reduce
+                maintaining peak single-GPU occupancy at 13.8 GB. Heterogeneous GPU CPU parallelism and dual-GPU parallel frame enhancement collectively reduce
                 animation latency by 33.1%, while three-mode LLM prompt enhancement
                 achieves a CLIP alignment score of 0.35
               </p>
@@ -155,7 +155,7 @@ const ResumeSection = () => {
               </p>
               <p className="pt-2 flex gap-4">
                 <span className="text-[#FFB646] font-bold">Submitted to: </span>
-                {"  "}Multimedia Tools and Application (Springer)
+                {"  "}Multimedia Systems (Springer)
               </p>
             </div>
           </div>
