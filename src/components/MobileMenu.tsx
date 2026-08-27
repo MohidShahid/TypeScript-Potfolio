@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import {Link} from "react-router-dom"
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   Sheet,
   SheetContent,
@@ -7,8 +7,8 @@ import {
   SheetFooter,
   SheetHeader,
   SheetTrigger,
-} from "@/components/ui/sheet"
-import { MobileNavToggle } from "./ui/resizable-navbar"
+} from "@/components/ui/sheet";
+import { MobileNavToggle } from "./ui/resizable-navbar";
 
 type SheetDemoProps = {
   isMobileMenuOpen: boolean;
@@ -19,6 +19,43 @@ export function SheetDemo({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }: SheetDemoProps) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleMobileNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    path: string
+  ) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+
+    if (path === "/" || path === "") {
+      if (location.pathname === "/") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        navigate("/");
+      }
+      return;
+    }
+
+    if (path.includes("#")) {
+      const [targetPathPart, hash] = path.split("#");
+      const targetPath = targetPathPart || "/";
+
+      if (location.pathname === targetPath) {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        navigate(`${targetPath}#${hash}`);
+      }
+      return;
+    }
+
+    navigate(path.startsWith("/") ? path : `/${path}`);
+  };
+
   return (
     <Sheet
       open={isMobileMenuOpen} // controlled open state
@@ -54,17 +91,7 @@ export function SheetDemo({
     key={item.path}
     to={item.path}
     className="flex items-center py-4 px-3 border-b text-lg border-[#FFFFFF33] text-white justify-between"
-    onClick={(e) => {
-      setIsMobileMenuOpen(false);
-
-      // Smooth scroll for hash links
-      if (item.path.includes("#")) {
-        e.preventDefault(); // prevent default navigation
-        const hash = item.path.split("#")[1];
-        const el = document.getElementById(hash);
-        el?.scrollIntoView({ behavior: "smooth" });
-      }
-    }}
+    onClick={(e) => handleMobileNavClick(e, item.path)}
   >
     <p id="sidebar-items">{item.label}</p>
     <ArrowUpRight />

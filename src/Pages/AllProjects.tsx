@@ -1,11 +1,12 @@
 import { NavbarDemo } from '../components/Navbar';
 import FooterSection from '../components/FooterSection';
-import TextSummarizer from "../assets/FYPImages/textSummarize.webp"
-import MysteryLetter from "../assets/FYPImages/mysteryLetter.jpg"
-import Sentiment from "../assets/FYPImages/sentimentAnalysis.png"
-import HelmetDetection from "../assets/FYPImages/helmetDetection.jpeg"
-import waterSafety from "../assets/FYPImages/waterSafetyPrediction.png"
-
+import TextSummarizer from "../assets/FYPImages/textSummarize.webp";
+import MysteryLetter from "../assets/FYPImages/mysteryLetter.jpg";
+import Sentiment from "../assets/FYPImages/sentimentAnalysis.png";
+import HelmetDetection from "../assets/FYPImages/helmetDetection.jpeg";
+import waterSafety from "../assets/FYPImages/waterSafetyPrediction.png";
+import { ScrollReveal, ScrollStaggerContainer, ScrollStaggerItem } from '../components/ui/ScrollReveal';
+import { motion } from "framer-motion";
 
 const projects = [
   {
@@ -58,58 +59,75 @@ const projects = [
   }
 ];
 
-
 export default function AllProjects() {
   return (
     <div className="min-h-screen bg-[#FFE9D9] text-gray-900">
       <NavbarDemo />
 
       <section className="px-6 md:px-16 lg:px-24 py-16">
-        <h1 className="text-4xl font-bold text-center mb-12 text-[#FFB646]">All Projects</h1>
+        <ScrollReveal direction="up" className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#FFB646] SyneClass">All Projects</h1>
+          <p className="text-gray-700 mt-3 text-base max-w-xl mx-auto">
+            Explore a curated selection of AI, Deep Learning, and Software Engineering projects.
+          </p>
+        </ScrollReveal>
 
-        <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-8">
+        <ScrollStaggerContainer className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-white shadow-md rounded-2xl p-6 hover:shadow-xl transition duration-300 border border-[#FFB646]"
-            >
-              <div className="h-40 w-full bg-[#FFB646]/20 rounded-xl mb-4 flex items-center justify-center text-gray-500">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover rounded-xl"
-                  />
-                ) : (
-                  <span>No Image</span>
-                )}
-              </div>
-
-              <h2 className="text-xl font-semibold mb-2 text-[#FFB646]">{project.title}</h2>
-
-              <p className="text-sm text-gray-700 mb-4">{project.description}</p>
-
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.techStack.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="bg-[#FFB646]/20 text-[#FFB646] px-3 py-1 rounded-full text-xs font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <a
-                href={project.github}
-                target="_blank"
-                className="inline-block mt-2 text-sm font-semibold text-[#FFB646] hover:text-[#E5942E] transition"
+            <ScrollStaggerItem key={index} direction="up" distance={35}>
+              <motion.div
+                whileHover={{ y: -8, transition: { duration: 0.25 } }}
+                className="bg-white shadow-md rounded-2xl p-6 hover:shadow-2xl transition-shadow duration-300 border border-[#FFB646]/60 flex flex-col justify-between h-full"
               >
-                View on GitHub →
-              </a>
-            </div>
+                <div>
+                  <div className="h-44 w-full bg-[#FFB646]/20 rounded-xl mb-4 flex items-center justify-center text-gray-500 overflow-hidden">
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="h-full w-full object-cover rounded-xl transition-transform duration-500 hover:scale-105"
+                      />
+                    ) : (
+                      <span className="font-semibold text-[#FF9330]">Interactive Project</span>
+                    )}
+                  </div>
+
+                  <h2 className="text-xl font-semibold mb-2 text-[#FFB646] SyneClass">{project.title}</h2>
+
+                  <p className="text-sm text-gray-700 mb-4 leading-relaxed">{project.description}</p>
+                </div>
+
+                <div>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.techStack.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="bg-[#FFB646]/20 text-[#FF9330] px-3 py-1 rounded-full text-xs font-semibold"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {project.github ? (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-2 text-sm font-semibold text-[#FFB646] hover:text-[#E5942E] transition-colors"
+                    >
+                      View on GitHub →
+                    </a>
+                  ) : (
+                    <span className="inline-block mt-2 text-sm font-semibold text-gray-400 cursor-default">
+                      Academic / Research Project
+                    </span>
+                  )}
+                </div>
+              </motion.div>
+            </ScrollStaggerItem>
           ))}
-        </div>
+        </ScrollStaggerContainer>
       </section>
 
       <FooterSection />

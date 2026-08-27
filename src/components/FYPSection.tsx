@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Play } from "lucide-react";
-// import FYPCover from "../assets/FYPCover.jpg";
+import { ScrollReveal } from "./ui/ScrollReveal";
 
 const FYPSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -15,28 +15,22 @@ const FYPSection = () => {
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-20">
-      {/* Section Label */}
-      <p className="text-[#FF9330] font-syne SyneClass text-xl md:text-2xl font-bold mb-3">
-        Final Year Project
-      </p>
+      {/* Section Label & Main Heading */}
+      <ScrollReveal direction="up" className="mb-10">
+        <p className="text-[#FF9330] font-syne SyneClass text-xl md:text-2xl font-bold mb-3">
+          Final Year Project
+        </p>
 
-      {/* Main Heading */}
-      <h2 className="text-2xl md:text-4xl font-bold leading-snug mb-10">
-        Multimedia Synthesis for 3D Styled Imagery & Short Animations
-      </h2>
+        <h2 className="text-2xl md:text-4xl font-bold leading-snug">
+          Multimedia Synthesis for 3D Styled Imagery & Short Animations
+        </h2>
+      </ScrollReveal>
 
       {/* Responsive Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-        {/* Left Section (Image) */}
-        <div className="flex flex-col gap-6">
+        {/* Left Section (Video) */}
+        <ScrollReveal direction="left" scale={true} className="flex flex-col gap-6">
           <div className="w-full overflow-hidden">
-            {/* Cover Image */}
-            {/* <img
-              src={FYPCover}
-              alt="FYP Cover"
-              className="w-full object-cover"
-            /> */}
-
             {/* Divider */}
             <div className="h-px w-full bg-white/10" />
 
@@ -60,24 +54,24 @@ const FYPSection = () => {
               {!playing && (
                 <button
                   onClick={handlePlay}
-                  className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg transition hover:bg-black/50"
+                  className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg transition hover:bg-black/50 cursor-pointer"
                 >
-                  <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white/90 shadow-xl">
+                  <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white/90 shadow-xl transition-transform hover:scale-110">
                     <Play className="h-10 w-10 text-black ml-1" />
                   </div>
                 </button>
               )}
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Right Section (Description) */}
-        <div className="flex flex-col gap-4">
+        <ScrollReveal direction="right" className="flex flex-col gap-4">
           <h4 className="SyneClass text-lg md:text-xl font-semibold mb-2">
             Project Description
           </h4>
 
-          <p className="text-base leading-relaxed  text-[#08080899]">
+          <p className="text-base leading-relaxed text-[#08080899]">
             Text-to-3D AI is a stage-based research project that transforms a
             user’s input into multiple 3D representations including:
           </p>
@@ -108,7 +102,7 @@ const FYPSection = () => {
           <p className="text-base italic bg-purple-50/50 p-3 rounded-lg border-l-4 border-[#FF9330]/30">
             The project is optimized to run efficiently on Kaggle’s T4x2 GPUs.
           </p>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

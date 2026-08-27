@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { Play } from "lucide-react";
+import { ScrollReveal } from "./ui/ScrollReveal";
 
 const NeuroAnimateSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -14,20 +15,21 @@ const NeuroAnimateSection = () => {
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 py-20">
-      {/* Section Label */}
-      <p className="text-[#FF9330] font-syne SyneClass text-xl md:text-2xl font-bold mb-3">
-        Next Evolution
-      </p>
+      {/* Section Label & Main Heading */}
+      <ScrollReveal direction="up" className="mb-10">
+        <p className="text-[#FF9330] font-syne SyneClass text-xl md:text-2xl font-bold mb-3">
+          Next Evolution
+        </p>
 
-      {/* Main Heading */}
-      <h2 className="text-2xl md:text-4xl font-bold leading-snug mb-10">
-        NeuroAnimate: Breaking the Boundaries of Generative Portrait Animation
-      </h2>
+        <h2 className="text-2xl md:text-4xl font-bold leading-snug">
+          NeuroAnimate: Breaking the Boundaries of Generative Portrait Animation
+        </h2>
+      </ScrollReveal>
 
       {/* Responsive Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         {/* Left Section (Video) */}
-        <div className="flex flex-col gap-6">
+        <ScrollReveal direction="left" scale={true} className="flex flex-col gap-6">
           <div className="w-full overflow-hidden">
             {/* Divider */}
             <div className="h-px w-full bg-white/10" />
@@ -52,19 +54,19 @@ const NeuroAnimateSection = () => {
               {!playing && (
                 <button
                   onClick={handlePlay}
-                  className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg transition hover:bg-black/50"
+                  className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg transition hover:bg-black/50 cursor-pointer"
                 >
-                  <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white/90 shadow-xl">
+                  <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white/90 shadow-xl transition-transform hover:scale-110">
                     <Play className="h-10 w-10 text-black ml-1" />
                   </div>
                 </button>
               )}
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Right Section (Description) */}
-        <div className="flex flex-col gap-4">
+        <ScrollReveal direction="right" className="flex flex-col gap-4">
           <h4 className="SyneClass text-lg md:text-xl font-semibold mb-2">
             NeuroAnimate Evolution
           </h4>
@@ -103,7 +105,7 @@ const NeuroAnimateSection = () => {
           <p className="text-base italic bg-purple-50/50 p-3 rounded-lg border-l-4 border-[#FF9330]/30">
             The project is optimized for high-performance dual-GPU inference.
           </p>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

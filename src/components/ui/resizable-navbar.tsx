@@ -7,9 +7,9 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "motion/react";
-
+import Logo from "../../assets/logo.png"
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom"; // Import React Router's Link for client-side navigation
+import { Link, useLocation } from "react-router-dom"; // Import React Router's Link and useLocation
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -116,43 +116,67 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
 
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
+  const location = useLocation();
+
+  const isItemActive = (link: string) => {
+    if (link === "/" && location.pathname === "/" && !location.hash) return true;
+    if (link.startsWith("/#") && location.hash === link.substring(1)) return true;
+    if (link === "/all-projects" && location.pathname === "/all-projects") return true;
+    return false;
+  };
 
   return (
     <motion.div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2",
+        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-1 lg:flex",
         className
       )}
       id="NavItems"
     >
-      {items.map((item, idx) => (
-        <Link
-          key={idx}
-          to={item.link} // Use 'to' prop for React Router
-          onMouseEnter={() => setHovered(idx)}
-          onClick={(e) => {
-            if (onItemClick) {
-              e.preventDefault(); // Stop default navigation
-              const anchorEvent = { currentTarget: e.currentTarget } as React.MouseEvent<HTMLAnchorElement>;
-              onItemClick(anchorEvent, item); // Trigger parent logic
-            }
-            // If no onItemClick, let React Router handle navigation/scrolling
-          }}
-          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
-        >
-          {hovered === idx && (
-            <motion.div
-              layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
-            />
-          )}
+      {items.map((item, idx) => {
+        const isHovered = hovered === idx;
+        const isActive = isItemActive(item.link);
 
-          <span className="relative z-20 text-black !SyneClass text-md">
-            {item.name}
-          </span>
-        </Link>
-      ))}
+        return (
+          <Link
+            key={idx}
+            to={item.link}
+            onMouseEnter={() => setHovered(idx)}
+            onClick={(e) => {
+              if (onItemClick) {
+                onItemClick(e, item);
+              }
+            }}
+            className="group relative px-4 py-2 text-sm font-semibold !SyneClass rounded-full transition-all duration-300 select-none flex items-center justify-center cursor-pointer"
+          >
+            {/* Sliding Pill Background on Hover */}
+            {isHovered && (
+              <motion.div
+                layoutId="nav-hover-pill"
+                transition={{
+                  type: "spring",
+                  stiffness: 450,
+                  damping: 32,
+                }}
+                className="absolute inset-0 rounded-full bg-black shadow-[0_4px_14px_rgba(0,0,0,0.18)]"
+              />
+            )}
+
+            {/* Nav Item Text */}
+            <motion.span
+              animate={{
+                color: isHovered ? "#ffffff" : isActive ? "#FF9330" : "#111827",
+                scale: isHovered ? 1.05 : 1,
+              }}
+              transition={{ duration: 0.15 }}
+              className="relative z-20 transition-colors duration-200"
+            >
+              {item.name}
+            </motion.span>
+          </Link>
+        );
+      })}
     </motion.div>
   );
 };
@@ -245,10 +269,16 @@ export const NavbarLogo = () => {
   return (
     <Link
       to="/" // Use 'to' for React Router
+      onClick={(e) => {
+        if (window.location.pathname === "/") {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }}
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
       <img
-        src="https://assets.aceternity.com/logo-dark.png"
+        src={Logo}
         alt="logo"
         width={30}
         height={30}

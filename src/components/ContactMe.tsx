@@ -1,10 +1,15 @@
-import { Github, LinkedIn, Email } from "@/assets/SocialIcon"
+import { Github, LinkedIn, Email } from "@/assets/SocialIcon";
+import { ScrollReveal } from "./ui/ScrollReveal";
+
 const ContactMe = () => {
   return (
-    <div className="grid lg:grid-cols-2 items-start gap-16 p-6 w-full max-w-7xl mx-auto py-20 bg-[#F5F5F5]" id="contact">
-      <div>
+    <div className="grid lg:grid-cols-2 items-start gap-16 p-6 w-full max-w-7xl mx-auto py-20 bg-[#F5F5F5] rounded-3xl my-8" id="contact">
+      <ScrollReveal direction="right" className="flex flex-col">
         <h2 className="text-slate-900 text-3xl font-bold SyneClass">Contact Me</h2>
-        <p className="text-[15px] text-slate-600 mt-4 leading-relaxed">Have some big idea or brand to develop and need help? Then reach out we'd love to hear about your project  and provide help.</p>
+        <p className="text-[15px] text-slate-600 mt-4 leading-relaxed">
+          Have some big idea or brand to develop and need help? Then reach out we'd love to hear about your project and provide help.
+        </p>
+
         <div className="mt-12">
           <h2 className="text-slate-900 text-base font-semibold">Email</h2>
           <ul className="mt-4">
@@ -17,7 +22,7 @@ const ContactMe = () => {
                     data-original="#000000" />
                 </svg>
               </div>
-              <a href="javascript:void(0)" className="text-sm ml-4">
+              <a href="mailto:haffiirfan@gmail.com" className="text-sm ml-4">
                 <small className="block text-slate-900">Mail</small>
                 <span className="font-semibold text-[#FF9330]">haffiirfan@gmail.com</span>
               </a>
@@ -28,33 +33,51 @@ const ContactMe = () => {
         <div className="mt-12">
           <h2 className="text-slate-900 text-base font-semibold">Socials</h2>
           <ul className="flex mt-4 space-x-4">
-            <li className="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
-            <Github className="h-6 w-6" />
+            <li className="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0 hover:scale-110 transition-transform cursor-pointer">
+              <Github className="h-6 w-6" />
             </li>
-            <li className="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
+            <li className="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0 hover:scale-110 transition-transform cursor-pointer">
               <LinkedIn className="h-6 w-6" />
             </li>
-            <li className="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
-            <Email className="h-6 w-6" />
+            <li className="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0 hover:scale-110 transition-transform cursor-pointer">
+              <Email className="h-6 w-6" />
             </li>
           </ul>
         </div>
-      </div>
+      </ScrollReveal>
 
-      <form className="lg:ml-auto space-y-4" action={"https://formspree.io/f/movglgwz"} method="POST">
-        <input type='text' placeholder='Name'
-          className="w-full rounded-md py-3 px-4  text-slate-900 text-sm border-2 border-gray-200 focus:border-slate-900 outline-none focus:bg-transparent" />
-        <input type='email' placeholder='Email'
-          className="w-full rounded-md py-3 px-4  text-slate-900 text-sm border-2 border-gray-200 focus:border-slate-900 outline-none focus:bg-transparent" />
-        <input type='text' placeholder='Subject'
-          className="w-full rounded-md py-3 px-4  text-slate-900 text-sm border-2 border-gray-200 focus:border-slate-900 outline-none focus:bg-transparent" />
-        <textarea placeholder='Message' rows={6}
-          className="w-full rounded-md px-4  text-slate-900 text-sm pt-3 border-2 border-gray-200 focus:border-slate-900 outline-none focus:bg-transparent"></textarea>
-        <button type='button'
-          className="text-white bg-slate-900 hover:bg-slate-800 tracking-wide rounded-md text-sm font-medium px-4 py-3 w-full cursor-pointer mt-2! border-0">Send message</button>
-      </form>
+      <ScrollReveal direction="left" delay={0.1} className="w-full">
+        <form className="lg:ml-auto space-y-4" action={"https://formspree.io/f/movglgwz"} method="POST">
+          <input
+            type='text'
+            placeholder='Name'
+            className="w-full rounded-md py-3 px-4 text-slate-900 text-sm border-2 border-gray-200 focus:border-slate-900 outline-none transition-colors"
+          />
+          <input
+            type='email'
+            placeholder='Email'
+            className="w-full rounded-md py-3 px-4 text-slate-900 text-sm border-2 border-gray-200 focus:border-slate-900 outline-none transition-colors"
+          />
+          <input
+            type='text'
+            placeholder='Subject'
+            className="w-full rounded-md py-3 px-4 text-slate-900 text-sm border-2 border-gray-200 focus:border-slate-900 outline-none transition-colors"
+          />
+          <textarea
+            placeholder='Message'
+            rows={6}
+            className="w-full rounded-md px-4 text-slate-900 text-sm pt-3 border-2 border-gray-200 focus:border-slate-900 outline-none transition-colors"
+          ></textarea>
+          <button
+            type='submit'
+            className="text-white bg-slate-900 hover:bg-slate-800 tracking-wide rounded-md text-sm font-medium px-4 py-3 w-full cursor-pointer mt-2! border-0 transition-transform active:scale-[0.99]"
+          >
+            Send message
+          </button>
+        </form>
+      </ScrollReveal>
     </div>
-  )
-}
+  );
+};
 
-export default ContactMe
+export default ContactMe;

@@ -1,16 +1,19 @@
 import { CarouselDemo } from "./FYPCarousel";
-import FYPSection from "./FYPSection"
+import FYPSection from "./FYPSection";
 import NeuroAnimateSection from "./NeuroAnimateSection";
 import { NeuroAnimateCarousel } from "./NeuroAnimateCarousel";
 import "../App.css";
 import { Button } from "./ui/button";
 import { ArrowUpRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { ScrollReveal } from "./ui/ScrollReveal";
+import { motion } from "framer-motion";
+
 const ProjectSection = () => {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center justify-center py-20 bg-[#FFE9D9]" id="project">
-      <div className="flex flex-col items-center justify-center pl-2.5">
+      <ScrollReveal direction="up" className="flex flex-col items-center justify-center pl-2.5">
         <p className="SyneClass text-[#FF9330] text-2xl font-bold">Projects</p>
 
         <div className="relative flex flex-col items-start SyneClass mt-4">
@@ -23,19 +26,33 @@ const ProjectSection = () => {
             </span>
           </p>
         </div>
-      </div>
+      </ScrollReveal>
+
       <FYPSection />
-      <div className="w-full max-w-7xl mx-auto px-4 py-3.5">
-      <CarouselDemo />
-      </div>
+
+      <ScrollReveal direction="up" scale={true} className="w-full max-w-7xl mx-auto px-4 py-3.5">
+        <CarouselDemo />
+      </ScrollReveal>
+
       <NeuroAnimateSection />
-      <div className="w-full max-w-7xl mx-auto px-4 py-3.5">
-      <NeuroAnimateCarousel />
-      </div>
-      <div className="flex items-center justify-center w-[80%] bg-[#0f172b] rounded-md cursor-pointer" onClick={()=> navigate('all-projects')}>
-      <Button className=" py-6 text-base font-semibold text-white cursor-pointer">View All Projects</Button>
-      <ArrowUpRight size={20} color="#ffff"/>
-      </div>
+
+      <ScrollReveal direction="up" scale={true} className="w-full max-w-7xl mx-auto px-4 py-3.5">
+        <NeuroAnimateCarousel />
+      </ScrollReveal>
+
+      <ScrollReveal direction="up" delay={0.1} className="w-full flex justify-center mt-6">
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="flex items-center justify-center w-[80%] bg-[#0f172b] rounded-md cursor-pointer hover:bg-black transition-colors"
+          onClick={() => navigate('all-projects')}
+        >
+          <Button className="py-6 text-base font-semibold text-white cursor-pointer bg-transparent hover:bg-transparent shadow-none">
+            View All Projects
+          </Button>
+          <ArrowUpRight size={20} color="#ffff" />
+        </motion.div>
+      </ScrollReveal>
     </div>
   );
 };

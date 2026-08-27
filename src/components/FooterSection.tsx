@@ -1,6 +1,8 @@
 import { Email, Github, LinkedIn } from "@/assets/SocialIcon";
 import "../App.css";
 import { ArrowUpRight } from "lucide-react";
+import { ScrollReveal } from "./ui/ScrollReveal";
+import { motion } from "framer-motion";
 
 const FooterSection = () => {
   return (
@@ -10,7 +12,7 @@ const FooterSection = () => {
         <div className="flex flex-wrap lg:flex-nowrap justify-between items-start lg:items-center gap-10">
           
           {/* Left Section */}
-          <div className="flex flex-col items-start gap-11 py-14 w-full lg:w-[35%]">
+          <ScrollReveal direction="right" className="flex flex-col items-start gap-11 py-14 w-full lg:w-[35%]">
             <p className="text-4xl sm:text-5xl lg:text-6xl font-bold relative text-white SyneClass leading-tight">
               <span className="relative inline-block z-10">
                 Let's
@@ -24,45 +26,55 @@ const FooterSection = () => {
             <div className="flex flex-wrap items-center gap-4 text-white">
               <p className="font-bold text-lg SyneClass">Based in Pakistan |</p>
               <div className="flex items-center gap-4 opacity-90">
-                <LinkedIn className="w-5 h-5 hover:text-blue-600 transition" />
-                <Github className="w-5 h-5 hover:text-blue-600 transition" />
-                <Email className="w-5 h-5 hover:text-red-600 transition" />
+                <LinkedIn className="w-5 h-5 hover:text-[#FFB646] hover:scale-110 transition-all cursor-pointer" />
+                <Github className="w-5 h-5 hover:text-[#FFB646] hover:scale-110 transition-all cursor-pointer" />
+                <Email className="w-5 h-5 hover:text-[#FFB646] hover:scale-110 transition-all cursor-pointer" />
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Right Section Cards */}
           <div className="flex flex-wrap justify-between gap-6 w-full lg:w-[65%]">
             {/* Card 1 */}
-            <div className="border border-[#ffffff33] rounded-2xl py-8 px-6 flex flex-col gap-8 w-full sm:w-[48%] lg:w-[48%]">
-              <h3 className="text-white SyneClass text-xl sm:text-2xl font-bold">
-                Looking for an AI Engineer?
-              </h3>
-              <div className="flex items-center justify-between">
-                <h2 className="text-[#FF9330] SyneClass text-xl sm:text-2xl font-bold break-all">
-                  haffiirfan@gmail.com
-                </h2>
-                <ArrowUpRight size={20} color="#FF9330" />
-              </div>
-            </div>
+            <ScrollReveal direction="up" delay={0.1} className="w-full sm:w-[48%] lg:w-[48%]">
+              <motion.div
+                whileHover={{ y: -6, borderColor: "#FFB646" }}
+                className="border border-[#ffffff33] rounded-2xl py-8 px-6 flex flex-col gap-8 h-full transition-colors bg-white/5 backdrop-blur-sm"
+              >
+                <h3 className="text-white SyneClass text-xl sm:text-2xl font-bold">
+                  Looking for an AI Engineer?
+                </h3>
+                <a href="mailto:haffiirfan@gmail.com" className="flex items-center justify-between group">
+                  <h2 className="text-[#FF9330] SyneClass text-xl sm:text-2xl font-bold break-all group-hover:underline">
+                    haffiirfan@gmail.com
+                  </h2>
+                  <ArrowUpRight size={20} color="#FF9330" className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </a>
+              </motion.div>
+            </ScrollReveal>
 
             {/* Card 2 */}
-            <div className="border border-[#ffffff33] rounded-2xl py-8 px-6 flex flex-col gap-8 w-full sm:w-[48%] lg:w-[48%]">
-              <h3 className="text-white SyneClass text-xl sm:text-2xl font-bold">
-                Let’s connect – reach out to me!
-              </h3>
-              <div className="flex items-center justify-between">
-                <h2 className="text-[#FF9330] SyneClass text-xl sm:text-2xl font-bold">
-                  +92 3181415197
-                </h2>
-                <ArrowUpRight size={20} color="#FF9330" />
-              </div>
-            </div>
+            <ScrollReveal direction="up" delay={0.2} className="w-full sm:w-[48%] lg:w-[48%]">
+              <motion.div
+                whileHover={{ y: -6, borderColor: "#FFB646" }}
+                className="border border-[#ffffff33] rounded-2xl py-8 px-6 flex flex-col gap-8 h-full transition-colors bg-white/5 backdrop-blur-sm"
+              >
+                <h3 className="text-white SyneClass text-xl sm:text-2xl font-bold">
+                  Let’s connect – reach out to me!
+                </h3>
+                <div className="flex items-center justify-between group">
+                  <h2 className="text-[#FF9330] SyneClass text-xl sm:text-2xl font-bold">
+                    +92 3181415197
+                  </h2>
+                  <ArrowUpRight size={20} color="#FF9330" />
+                </div>
+              </motion.div>
+            </ScrollReveal>
           </div>
         </div>
 
         {/* Big Name SVG */}
-        <p className="py-9 text-center">
+        <ScrollReveal direction="up" scale={true} className="py-9 text-center">
           <svg
             width="100%"
             height="auto"
@@ -82,14 +94,14 @@ const FooterSection = () => {
               HAFFI IRFAN
             </text>
           </svg>
-        </p>
+        </ScrollReveal>
 
         {/* Bottom Line */}
-        <div className="border-t border-[#ffffff33] pb-10">
+        <ScrollReveal direction="none" className="border-t border-[#ffffff33] pb-10">
           <p className="text-white text-base sm:text-lg py-7">
             &copy; 2025 Haffi Irfan, All Rights Reserved
           </p>
-        </div>
+        </ScrollReveal>
 
       </div>
     </div>
