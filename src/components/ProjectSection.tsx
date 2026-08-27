@@ -12,12 +12,12 @@ import { motion } from "framer-motion";
 const ProjectSection = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col items-center justify-center py-20 bg-[#FFE9D9]" id="project">
+    <div className="flex flex-col items-center justify-center py-20 bg-[#FFE9D9] dark:bg-[#0c0d0e] transition-colors duration-300" id="project">
       <ScrollReveal direction="up" className="flex flex-col items-center justify-center pl-2.5">
         <p className="SyneClass text-[#FF9330] text-2xl font-bold">Projects</p>
 
         <div className="relative flex flex-col items-start SyneClass mt-4">
-          <p className="md:text-6xl text-4xl font-bold relative">
+          <p className="md:text-6xl text-4xl font-bold relative text-black dark:text-white">
             My Recent{' '}
             <span className="relative inline-block z-10">
               Work
@@ -44,7 +44,7 @@ const ProjectSection = () => {
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="flex items-center justify-center w-[80%] bg-[#0f172b] rounded-md cursor-pointer hover:bg-black transition-colors"
+          className="flex items-center justify-center w-[80%] bg-[#0f172b] dark:bg-[#18181b] border border-transparent dark:border-gray-700 rounded-md cursor-pointer hover:bg-black dark:hover:bg-[#27272a] transition-colors"
           onClick={() => navigate('all-projects')}
         >
           <Button className="py-6 text-base font-semibold text-white cursor-pointer bg-transparent hover:bg-transparent shadow-none">

@@ -17,13 +17,13 @@ interface ScrollRevealProps extends HTMLMotionProps<"div"> {
 export const ScrollReveal = ({
   children,
   direction = "up",
-  distance = 40,
-  duration = 0.7,
-  delay = 0,
+  distance = 75,
+  duration = 1.2,
+  delay = 0.1,
   blur = false,
   scale = false,
   once = false,
-  amount = 0.15,
+  amount = 0.25,
   className = "",
   ...props
 }: ScrollRevealProps) => {
@@ -51,7 +51,7 @@ export const ScrollReveal = ({
         opacity: 0,
         ...initialOffset,
         filter: blur ? "blur(8px)" : "none",
-        scale: scale ? 0.95 : 1,
+        scale: scale ? 0.94 : 1,
       }}
       whileInView={{
         opacity: 1,
@@ -63,12 +63,12 @@ export const ScrollReveal = ({
       viewport={{
         once,
         amount,
-        margin: "-40px 0px -40px 0px",
+        margin: "-100px 0px -80px 0px",
       }}
       transition={{
         duration,
         delay,
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: [0.22, 1, 0.36, 1],
       }}
       className={className}
       {...props}
@@ -89,10 +89,10 @@ interface ScrollStaggerContainerProps extends HTMLMotionProps<"div"> {
 
 export const ScrollStaggerContainer = ({
   children,
-  staggerChildren = 0.08,
-  delayChildren = 0,
+  staggerChildren = 0.15,
+  delayChildren = 0.1,
   once = false,
-  amount = 0.15,
+  amount = 0.25,
   className = "",
   ...props
 }: ScrollStaggerContainerProps) => {
@@ -112,7 +112,7 @@ export const ScrollStaggerContainer = ({
       variants={containerVariants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once, amount, margin: "-40px 0px -40px 0px" }}
+      viewport={{ once, amount, margin: "-100px 0px -80px 0px" }}
       className={className}
       {...props}
     >
@@ -133,8 +133,8 @@ interface ScrollStaggerItemProps extends HTMLMotionProps<"div"> {
 export const ScrollStaggerItem = ({
   children,
   direction = "up",
-  distance = 30,
-  duration = 0.6,
+  distance = 55,
+  duration = 1.0,
   blur = true,
   className = "",
   ...props
@@ -170,7 +170,7 @@ export const ScrollStaggerItem = ({
       filter: blur ? "blur(0px)" : "none",
       transition: {
         duration,
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: [0.22, 1, 0.36, 1],
       },
     },
   };

@@ -8,6 +8,7 @@ import {
   MobileNavHeader,
 } from "@/components/ui/resizable-navbar";
 import { SheetDemo } from "./MobileMenu";
+import { ThemeToggle } from "./ui/ThemeToggle";
 import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
@@ -43,8 +44,10 @@ export function NavbarDemo() {
     link: string;
   }
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const handleNavigation = (link: string) => {
-    if (link === "/" || link === "") {
+    if (link === "/") {
       if (location.pathname === "/") {
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
@@ -53,33 +56,29 @@ export function NavbarDemo() {
       return;
     }
 
-    if (link.includes("#")) {
-      const [path, hash] = link.split("#");
-      const targetPath = path || "/";
-
-      if (location.pathname === targetPath) {
-        const el = document.getElementById(hash);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
+    if (link.startsWith("/#")) {
+      const targetId = link.replace("/#", "");
+      if (location.pathname === "/") {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
         }
       } else {
-        navigate(`${targetPath}#${hash}`);
+        navigate(link);
       }
       return;
     }
 
-    navigate(link.startsWith("/") ? link : `/${link}`);
+    navigate(link);
   };
 
   const onNavItemClick = (
-    event: React.MouseEvent<HTMLAnchorElement>,
+    e: React.MouseEvent<HTMLAnchorElement>,
     item: NavItem
   ) => {
-    event.preventDefault();
+    e.preventDefault();
     handleNavigation(item.link);
   };
-
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <Navbar>
@@ -88,7 +87,8 @@ export function NavbarDemo() {
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} onItemClick={onNavItemClick} />
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
             <motion.div
               initial="initial"
               whileHover="hover"
@@ -106,7 +106,7 @@ export function NavbarDemo() {
             >
               <Link
                 to="/#contact"
-                className="group relative flex items-center gap-2 px-5 py-2 rounded-full bg-black text-white border border-black text-sm font-bold SyneClass shadow-sm hover:shadow-[0_8px_20px_rgba(255,182,70,0.35)] overflow-hidden cursor-pointer transition-all duration-300"
+                className="group relative flex items-center gap-2 px-5 py-2 rounded-full bg-black dark:bg-white/10 text-white border border-black dark:border-white/20 text-sm font-bold SyneClass shadow-sm hover:shadow-[0_8px_20px_rgba(255,182,70,0.35)] overflow-hidden cursor-pointer transition-all duration-300"
                 onClick={(e) => {
                   e.preventDefault();
                   handleNavigation("/#contact");
@@ -144,10 +144,13 @@ export function NavbarDemo() {
         <MobileNav>
           <MobileNavHeader>
             <NavbarLogo />
-            <SheetDemo
-              isMobileMenuOpen={isMobileMenuOpen}
-              setIsMobileMenuOpen={setIsMobileMenuOpen}
-            />
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <SheetDemo
+                isMobileMenuOpen={isMobileMenuOpen}
+                setIsMobileMenuOpen={setIsMobileMenuOpen}
+              />
+            </div>
           </MobileNavHeader>
         </MobileNav>
       </div>
@@ -180,7 +183,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Name Section */}
-        <div className="text-7xl md:text-[132px] font-bold leading-none relative">
+        <div className="text-7xl md:text-[132px] font-bold leading-none relative text-black dark:text-white">
           <div>
             <span className="relative inline-flex items-center">
               {/* Circle behind word */}
@@ -189,7 +192,7 @@ export const HeroSection = () => {
             </span>
             <span className="block">Irfan</span>
           </div>
-          <p className="text-lg sm:text-[24px] mt-4 font-semibold text-gray-800">
+          <p className="text-lg sm:text-[24px] mt-4 font-semibold text-gray-800 dark:text-gray-200">
             AI Engineer | Based in Pakistan
           </p>
         </div>
@@ -209,7 +212,7 @@ export const HeroSection = () => {
               },
               tap: { scale: 0.96, y: 0 },
             }}
-            className="group relative flex items-center justify-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 text-lg font-semibold rounded-xl bg-black text-white border-2 border-black shadow-md hover:shadow-[0_12px_28px_rgba(255,182,70,0.4)] overflow-hidden cursor-pointer transition-all duration-300"
+            className="group relative flex items-center justify-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 text-lg font-semibold rounded-xl bg-black text-white border-2 border-black dark:border-white shadow-md hover:shadow-[0_12px_28px_rgba(255,182,70,0.4)] overflow-hidden cursor-pointer transition-all duration-300"
             onClick={() => {
               const el = document.getElementById("contact");
               el?.scrollIntoView({ behavior: "smooth" });
@@ -252,19 +255,19 @@ export const HeroSection = () => {
               },
               tap: { scale: 0.96, y: 0 },
             }}
-            className="group relative flex items-center justify-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 text-lg font-semibold rounded-xl border-2 border-black bg-transparent text-black hover:border-black shadow-sm hover:shadow-[0_12px_28px_rgba(0,0,0,0.25)] overflow-hidden cursor-pointer transition-all duration-300"
+            className="group relative flex items-center justify-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 text-lg font-semibold rounded-xl border-2 border-black dark:border-white bg-transparent text-black dark:text-white hover:border-black shadow-sm hover:shadow-[0_12px_28px_rgba(0,0,0,0.25)] overflow-hidden cursor-pointer transition-all duration-300"
             onClick={() => {
               const el = document.getElementById("project");
               el?.scrollIntoView({ behavior: "smooth" });
             }}
           >
             {/* Expanding Color Fill from Bottom */}
-            <span className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)]" />
+            <span className="absolute inset-0 bg-black dark:bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)]" />
 
             {/* Shimmer light sweep */}
             <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none z-10" />
 
-            <span className="relative z-20 transition-colors duration-300 group-hover:text-white">
+            <span className="relative z-20 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
               My Work
             </span>
             <motion.span
@@ -276,7 +279,7 @@ export const HeroSection = () => {
                   transition: { type: "spring", stiffness: 400, damping: 12 },
                 },
               }}
-              className="relative z-20 flex items-center transition-colors duration-300 group-hover:text-white"
+              className="relative z-20 flex items-center transition-colors duration-300 group-hover:text-white dark:group-hover:text-black"
             >
               <ArrowRight className="size-5" />
             </motion.span>
@@ -284,17 +287,17 @@ export const HeroSection = () => {
         </div>
 
         {/* Stats + Social Icons */}
-        <div className="flex sm:flex-row items-start sm:items-center md:justify-start gap-12 mt-6 w-full">
+        <div className="flex sm:flex-row items-start sm:items-center md:justify-start gap-12 mt-6 w-full text-black dark:text-white">
           {/* Stats */}
           <div className="flex items-center gap-3">
             <h2 className="text-3xl font-bold">1.2k+</h2>
-            <p className="text-sm text-gray-600 leading-tight">
+            <p className="text-sm text-gray-600 dark:text-gray-300 leading-tight">
               Hours of Coding<br />Practice
             </p>
           </div>
 
           {/* Social Icons */}
-          <div className="flex items-center gap-6 opacity-90">
+          <div className="flex items-center gap-6 opacity-90 text-black dark:text-white">
             <LinkedIn className="w-6 h-6 hover:scale-110 transition-transform cursor-pointer" />
             <Github className="w-6 h-6 hover:scale-110 transition-transform cursor-pointer" />
             <Email className="w-6 h-6 hover:scale-110 transition-transform cursor-pointer" />

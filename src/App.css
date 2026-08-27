@@ -8,9 +8,17 @@ html {
   scroll-margin-top: 4rem;
 }
 
-body{
+body {
   background-color: #F5F5F5;
+  color: #111827;
   font-family: "DM Sans", "Syne", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body,
+.dark body {
+  background-color: #0c0d0e;
+  color: #f3f4f6;
 }
 
 .SyneClass {

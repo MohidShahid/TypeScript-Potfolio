@@ -3,8 +3,8 @@ import Home from "./Pages/Home";
 import AllProjects from "./Pages/AllProjects";
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
-// import { SpiderwebCursor } from "./components/ui/SpiderwebCursor";
 import { CustomCursor } from "./components/ui/CustomCursor";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function ScrollToHash() {
   const location = useLocation();
@@ -27,14 +27,14 @@ function ScrollToHash() {
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <CustomCursor />
       <ScrollToHash />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/all-projects" element={<AllProjects />} />
       </Routes>
-    </>
+    </ThemeProvider>
   );
 }
 

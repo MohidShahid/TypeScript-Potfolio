@@ -7,7 +7,7 @@ import ContactMe from '../components/ContactMe';
 const Home = () => {
   return (
        <>
-    <div className="relative w-full bg-[#FFE9D9]">
+    <div className="relative w-full bg-[#FFE9D9] dark:bg-[#0c0d0e] transition-colors duration-300">
     <NavbarDemo />
     <HeroSection />
     </div>

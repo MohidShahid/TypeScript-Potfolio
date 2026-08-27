@@ -10,6 +10,7 @@ import {
 import Logo from "../../assets/logo.png"
 import React, { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom"; // Import React Router's Link and useLocation
+import { useTheme } from "@/context/ThemeContext";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -104,8 +105,8 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         minWidth: "800px",
       }}
       className={cn(
-        "relative z-60 mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
-        visible && "bg-white/80 dark:bg-neutral-950/80",
+        "relative z-60 mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex",
+        visible && "bg-white/85 dark:bg-[#141416]/90 border border-black/5 dark:border-white/10 shadow-lg",
         className
       )}
     >
@@ -117,6 +118,8 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
   const location = useLocation();
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   const isItemActive = (link: string) => {
     if (link === "/" && location.pathname === "/" && !location.hash) return true;
@@ -159,14 +162,18 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
                   stiffness: 450,
                   damping: 32,
                 }}
-                className="absolute inset-0 rounded-full bg-black shadow-[0_4px_14px_rgba(0,0,0,0.18)]"
+                className="absolute inset-0 rounded-full bg-black dark:bg-white shadow-[0_4px_14px_rgba(0,0,0,0.18)]"
               />
             )}
 
             {/* Nav Item Text */}
             <motion.span
               animate={{
-                color: isHovered ? "#ffffff" : isActive ? "#FF9330" : "#111827",
+                color: isHovered
+                  ? isDark ? "#000000" : "#ffffff"
+                  : isActive
+                  ? "#FF9330"
+                  : isDark ? "#f3f4f6" : "#111827",
                 scale: isHovered ? 1.05 : 1,
               }}
               transition={{ duration: 0.15 }}

@@ -36,7 +36,11 @@ export default function AnimatedTabs({ tabVal, setTabVal }: AnimatedTabsProps) {
             className={`
               flex items-center justify-between gap-3 cursor-pointer px-5 py-3 rounded-xl border
               transition-all duration-300
-              ${isActive ? "bg-black text-white border-black" : "bg-white text-black border-gray-300"}
+              ${
+                isActive
+                  ? "bg-black text-white border-black dark:bg-[#FFB646] dark:text-black dark:border-[#FFB646] font-bold shadow-md shadow-amber-500/10"
+                  : "bg-white text-black border-gray-300 dark:bg-[#141416] dark:text-gray-200 dark:border-gray-800 hover:dark:border-gray-700 hover:dark:bg-[#1c1c1f]"
+              }
             `}
           >
             <p className="font-medium">{t}</p>

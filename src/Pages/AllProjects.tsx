@@ -61,13 +61,13 @@ const projects = [
 
 export default function AllProjects() {
   return (
-    <div className="min-h-screen bg-[#FFE9D9] text-gray-900">
+    <div className="min-h-screen bg-[#FFE9D9] dark:bg-[#0c0d0e] text-gray-900 dark:text-white transition-colors duration-300">
       <NavbarDemo />
 
       <section className="px-6 md:px-16 lg:px-24 py-16">
         <ScrollReveal direction="up" className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-[#FFB646] SyneClass">All Projects</h1>
-          <p className="text-gray-700 mt-3 text-base max-w-xl mx-auto">
+          <p className="text-gray-700 dark:text-gray-300 mt-3 text-base max-w-xl mx-auto">
             Explore a curated selection of AI, Deep Learning, and Software Engineering projects.
           </p>
         </ScrollReveal>
@@ -77,10 +77,10 @@ export default function AllProjects() {
             <ScrollStaggerItem key={index} direction="up" distance={35}>
               <motion.div
                 whileHover={{ y: -8, transition: { duration: 0.25 } }}
-                className="bg-white shadow-md rounded-2xl p-6 hover:shadow-2xl transition-shadow duration-300 border border-[#FFB646]/60 flex flex-col justify-between h-full"
+                className="bg-white dark:bg-[#141416] shadow-md rounded-2xl p-6 hover:shadow-2xl transition-shadow duration-300 border border-[#FFB646]/60 dark:border-gray-800 flex flex-col justify-between h-full"
               >
                 <div>
-                  <div className="h-44 w-full bg-[#FFB646]/20 rounded-xl mb-4 flex items-center justify-center text-gray-500 overflow-hidden">
+                  <div className="h-44 w-full bg-[#FFB646]/20 dark:bg-white/5 rounded-xl mb-4 flex items-center justify-center text-gray-500 overflow-hidden">
                     {project.image ? (
                       <img
                         src={project.image}
@@ -94,7 +94,7 @@ export default function AllProjects() {
 
                   <h2 className="text-xl font-semibold mb-2 text-[#FFB646] SyneClass">{project.title}</h2>
 
-                  <p className="text-sm text-gray-700 mb-4 leading-relaxed">{project.description}</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">{project.description}</p>
                 </div>
 
                 <div>
