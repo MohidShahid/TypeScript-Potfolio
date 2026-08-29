@@ -74,7 +74,7 @@ export function NavbarDemo() {
 
   const onNavItemClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    item: NavItem
+    item: NavItem,
   ) => {
     e.preventDefault();
     handleNavigation(item.link);
@@ -128,7 +128,11 @@ export function NavbarDemo() {
                       x: 3,
                       y: -3,
                       scale: 1.2,
-                      transition: { type: "spring", stiffness: 400, damping: 12 },
+                      transition: {
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 12,
+                      },
                     },
                   }}
                   className="relative z-20 flex items-center transition-colors duration-300 group-hover:text-black"
@@ -170,10 +174,10 @@ export const HeroSection = () => {
     <div className="container max-w-7xl mx-auto px-4 sm:px-8 pt-24 pb-12 flex flex-col md:flex-row items-start md:items-center md:justify-between SyneClass gap-12 relative overflow-visible">
       {/* Left Side - Text Content */}
       <motion.div
-        initial={{ opacity: 0, y: 35, filter: "blur(6px)" }}
-        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        viewport={{ once: false, amount: 0.2 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="flex flex-col items-start text-left space-y-8 w-full md:w-1/2"
       >
         {/* Heading Line + Title */}
@@ -292,7 +296,9 @@ export const HeroSection = () => {
           <div className="flex items-center gap-3">
             <h2 className="text-3xl font-bold">1.2k+</h2>
             <p className="text-sm text-gray-600 dark:text-gray-300 leading-tight">
-              Hours of Coding<br />Practice
+              Hours of Coding
+              <br />
+              Practice
             </p>
           </div>
 
@@ -307,14 +313,13 @@ export const HeroSection = () => {
 
       {/* Right Side - Image Container (Clean Circle Portrait) */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.9, y: 35, filter: "blur(6px)" }}
-        whileInView={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
-        viewport={{ once: false, amount: 0.2 }}
-        transition={{ duration: 0.9, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+        initial={{ opacity: 0, scale: 0.94, y: 30 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         className="relative w-full md:w-[45%] flex justify-center items-center mt-12 md:mt-8 px-4"
       >
         <div className="relative w-full max-w-[520px] aspect-square flex items-center justify-center">
-
           {/* Background Glow Aura */}
           <div className="absolute inset-[-10%] bg-[#FFB646]/20 rounded-full blur-[100px] -z-20 animate-pulse" />
 
@@ -327,7 +332,6 @@ export const HeroSection = () => {
               loading="lazy"
             />
           </div>
-
         </div>
       </motion.div>
     </div>
